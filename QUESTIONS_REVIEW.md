@@ -41,16 +41,12 @@ Feel free to add, remove, reword, or change difficulty levels. You can also add 
 
 ---
 
-### E2. (True or False, Difficulty: 1)
+### E4. (Sort, Difficulty: 1)
+**Question:** Sort the macronutrients into the correct boxes:
 
-**Statement:** Every cell in our body requires energy to function.
-
-**Answer:** True ✅
-
-**Explanation:** That's right! Energy is necessary for every body process — without it, we cannot survive.
+Note to agent: We will use the "Sort the macronurtient" game from the Nutrition App folder.
 
 ---
-
 ### E4. (True or False, Difficulty: 1)
 
 **Statement:** Fats are a quicker energy source than carbohydrates.
@@ -128,31 +124,6 @@ Feel free to add, remove, reword, or change difficulty levels. You can also add 
 
 ---
 
-### BS5. (True or False, Difficulty: 2)
-
-**Statement:** After a sugary meal, blood sugar rises _______.
-
-**Select the correct word:** 
-- A) Quickly ✅
-- B) Slowly 
-
-**Explanation:** After a sugary meal or one heavy in carbs, blood sugar can rise too rapidly. This causes too much insulin to be released, leading to a blood sugar dip.
-
----
-
-### BS6. (Multiple Choice, Difficulty: 2)
-
-**Question:** What happens when too much insulin is released after a sugar spike?
-
-- A) You feel energised for hours
-- B) Blood sugar stays stable
-- C) You experience a blood sugar dip with low energy and cravings ✅
-- D) Your muscles grow stronger
-
-**Explanation:** Too much insulin causes a blood sugar dip — this is where we feel low energy, mood changes, and cravings for sugary foods. This cycle is the "blood sugar roller coaster".
-
----
-
 ### BS8. (Multiple Choice, Difficulty: 2)
 
 **Question:** Where is excess glucose stored in the body?
@@ -178,23 +149,25 @@ Feel free to add, remove, reword, or change difficulty levels. You can also add 
 - Image 4) Pancakes with syrup image: Drag and drop image of pancakes with fruits and berries. 
 
 
-**Explanation:** Getting choosy means swapping refined carbs (like white bread) for whole grain alternatives and including fibre from veg, fruits, and legumes.
+**Explanation:** Swapping refined carbs (like white bread) for whole grain alternatives and including fibre from veg, fruits, and legumes is a key strategy for stabilizing blood sugar.
 
 ---
 
 ### S2. (True or False, Difficulty: 1) — Step 1: Get Choosy with Carbs
 
-**Statement:** Choose some healthy alternatives to the sugary fizzy drinks: 
+**Statement:** Add up to four ingredients to create a tasty alternative to sugary fizzy drinks.
 
-**Click on image:** 
-- Apple juice ✅
-- Energy drink
-- Orange juice ✅
-- High sugar Soda drink
-- Water with lemon and mint leaf ✅
-- Bubbly water with berries ✅
+**Drag and Drop:** Drag the ingredient into the cup to create a new drink. 
+- Apple juice 
+- Orange juice 
+- Water 
+- Lemon
+- Berries
+- Mint leaves
+- Watermelon
+- Mango juice
 
-**Explanation:** That's
+**Explanation:** Replacing high sugar drinks can help stabilize insulin levels and provide steadier energy levels.
 
 ---
 
@@ -213,17 +186,23 @@ Feel free to add, remove, reword, or change difficulty levels. You can also add 
 
 ### S4. (True or False, Difficulty: 2) — Step 3: Consume Health-Promoting Fats
 
-**Statement:** Fats help your body absorb vitamins A, D, E, and K.
+**Statement:** Fats help your body absorb vitamins _ _ _ and _.
 
-**Answer:** True ✅
+**Select the correct answers:** 
+- A ✅
+- D ✅
+- C
+- E ✅
+- B12
+- K ✅
 
-**Explanation:** Health-promoting fats play a key role in absorbing and storing these fat-soluble vitamins.
+**Explanation:** Health-promoting fats play a key role in absorbing and storing the fat-soluble vitamins A, D, E and K.
 
 ---
 
 ### S5. (Multiple Choice, Difficulty: 2) — Step 3: Consume Health-Promoting Fats
 
-**Question:** Which foods contain health-promoting fats?
+**Question:** Which of these foods contain health-promoting fats?
 
 **Answer:** 
 - Potato chips 
@@ -301,12 +280,12 @@ Feel free to add, remove, reword, or change difficulty levels. You can also add 
 **Question:** Which activities can help to reduce stress?
 
 **Answer:** 
-- Race
+- Running a marathon
 - Listening to music ✅
 - Sleep ✅
-- Exam
+- Taking an exam
 - Reading ✅
-- Airport
+- Airport 
 - Hug ✅ 
 
 **Explanation:** Finding ways to relax and de-stress is important for managing energy.
