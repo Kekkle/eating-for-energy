@@ -1,0 +1,94 @@
+.ms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ms-question {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ms-instruction {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-top: -0.5rem;
+}
+
+.ms-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ms-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  min-height: var(--tap-target);
+  border: 2px solid #ddd;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-white);
+  text-align: left;
+  font-size: 1rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ms-option:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.ms-option-selected {
+  border-color: var(--color-blue);
+  background: #EEF2FA;
+}
+
+.ms-option-correct {
+  border-color: var(--color-correct);
+  background: #E8F5E9;
+}
+
+.ms-option-incorrect {
+  border-color: var(--color-incorrect);
+  background: #FFEBEE;
+  animation: shake 0.4s ease-in-out;
+}
+
+.ms-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  background: var(--color-bg);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.ms-checkbox-checked {
+  border-color: var(--color-blue);
+  background: var(--color-blue);
+  color: white;
+}
+
+.ms-checkbox-correct {
+  border-color: var(--color-correct);
+  background: var(--color-correct);
+  color: white;
+}
+
+.ms-option-text {
+  flex: 1;
+}
+
+.ms-submit {
+  align-self: center;
+  min-width: 200px;
+}

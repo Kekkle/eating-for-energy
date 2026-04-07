@@ -1,0 +1,204 @@
+.cd-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cd-question {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cd-instruction {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-top: -0.5rem;
+}
+
+.cd-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 480px) {
+  .cd-workspace {
+    flex-direction: row;
+  }
+
+  .cd-cup-area {
+    flex: 0 0 180px;
+  }
+
+  .cd-ingredients {
+    flex: 1;
+  }
+}
+
+.cd-cup-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cd-cup {
+  position: relative;
+  width: 160px;
+  min-height: 200px;
+  border: 3px solid var(--color-blue);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.cd-cup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -3px;
+  right: -3px;
+  height: 3px;
+  background: var(--color-blue);
+  border-radius: 3px 3px 0 0;
+}
+
+.cd-cup-done {
+  border-color: var(--color-correct);
+}
+
+.cd-cup-done::before {
+  background: var(--color-correct);
+}
+
+.cd-cup-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #FFE082, #FFCC80, #FFB74D);
+  opacity: 0.4;
+  transition: height 0.4s ease;
+  border-radius: 0 0 17px 17px;
+}
+
+.cd-cup-items {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  min-height: 200px;
+  justify-content: flex-end;
+}
+
+.cd-cup-empty {
+  font-size: 0.8rem;
+  color: #bbb;
+  text-align: center;
+  padding: 2rem 0.5rem;
+}
+
+.cd-cup-ingredient {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(46, 94, 170, 0.1);
+  border: 1px solid var(--color-blue);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.cd-cup-ingredient:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.cd-remove {
+  margin-left: auto;
+  color: var(--color-text-light);
+}
+
+.cd-cup-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.cd-drink-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  text-align: center;
+}
+
+.cd-ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cd-ing-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.cd-ing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.cd-ing-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius-md);
+  background: white;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: left;
+  min-height: var(--tap-target);
+  transition: all 0.15s ease;
+}
+
+.cd-ing-btn:not(:disabled):hover {
+  border-color: var(--color-purple);
+  background: #F3E8F9;
+}
+
+.cd-ing-btn:not(:disabled):active {
+  transform: scale(0.96);
+}
+
+.cd-ing-used {
+  opacity: 0.4;
+  border-style: dashed;
+}
+
+.cd-ing-emoji {
+  font-size: 1.3rem;
+}
+
+.cd-ing-name {
+  flex: 1;
+}
+
+.cd-submit {
+  align-self: center;
+  min-width: 200px;
+}

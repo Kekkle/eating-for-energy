@@ -1,0 +1,100 @@
+.fib-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fib-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.fib-sentence {
+  font-size: 1.05rem;
+  line-height: 2.2;
+  color: var(--color-text);
+}
+
+.fib-blank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: 0.3rem 0.75rem;
+  margin: 0 0.2rem;
+  border: 2px dashed #bbb;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  color: var(--color-text-light);
+  vertical-align: middle;
+  transition: all 0.15s ease;
+}
+
+.fib-blank-filled {
+  border-style: solid;
+  border-color: var(--color-blue);
+  background: #EEF2FA;
+  color: var(--color-charcoal);
+  font-weight: 600;
+}
+
+.fib-blank-correct {
+  border-color: var(--color-correct);
+  background: #E8F5E9;
+  color: var(--color-correct);
+}
+
+.fib-blank-incorrect {
+  border-color: var(--color-incorrect);
+  background: #FFEBEE;
+  color: var(--color-incorrect);
+  animation: shake 0.4s ease-in-out;
+}
+
+.fib-word-bank {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fib-bank-label {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.fib-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fib-word {
+  padding: 0.55rem 1rem;
+  border: 2px solid var(--color-purple);
+  border-radius: var(--radius-lg);
+  background: white;
+  color: var(--color-purple);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: all 0.15s ease;
+  min-height: var(--tap-target);
+}
+
+.fib-word:not(:disabled):hover {
+  background: var(--color-purple);
+  color: white;
+}
+
+.fib-word:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.fib-submit {
+  align-self: center;
+  min-width: 200px;
+}

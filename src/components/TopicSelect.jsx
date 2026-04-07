@@ -3,23 +3,23 @@ import './TopicSelect.css'
 
 const TOPICS = [
   {
-    id: 'energy',
-    title: 'Energy & Macronutrients',
-    description: 'Where does energy come from? Learn about carbs, protein, and fats.',
+    id: 'macronutrients',
+    title: 'Macronutrients & Balanced Eating',
+    description: 'What are macronutrients, what do they do, and how do we eat well?',
     icon: '⚡',
     color: 'var(--color-yellow)',
   },
   {
     id: 'bloodSugar',
-    title: 'Blood Sugar',
-    description: 'How your body manages blood sugar and why it matters for energy.',
+    title: 'Blood Sugar & Energy',
+    description: 'How does blood sugar work, what controls it, and how does it affect our energy?',
     icon: '🩸',
     color: 'var(--color-red)',
   },
   {
-    id: 'nineSteps',
-    title: 'The 9 Steps',
-    description: 'Master the 9 simple steps to eat for energy and feel your best.',
+    id: 'healthyHabits',
+    title: 'Healthy Habits & Smart Choices',
+    description: 'Drink swaps, hydration, reading labels, and managing stress.',
     icon: '🏆',
     color: 'var(--color-green)',
   },
