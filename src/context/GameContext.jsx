@@ -85,7 +85,11 @@ export function GameProvider({ children }) {
   const [state, dispatch] = useReducer(gameReducer, initialState)
 
   const startGame = useCallback((topicId, questions) => {
-    const shuffled = [...questions].sort(() => Math.random() - 0.5)
+    const shuffled = [...questions]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
     dispatch({ type: 'START_GAME', topicId, questions: shuffled })
   }, [])
 

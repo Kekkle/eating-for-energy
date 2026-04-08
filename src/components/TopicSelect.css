@@ -64,3 +64,27 @@
   color: var(--color-text-light);
   line-height: 1.4;
 }
+
+.topic-card-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.topic-card-disabled:active {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.topic-coming-soon {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

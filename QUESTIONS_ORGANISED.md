@@ -90,25 +90,6 @@ _Note to agent: We will use the "Sort the macronutrient" game from the Nutrition
 
 ---
 
-### 1.7 (DnD Sort, Difficulty: 2)
-
-**Question:** Sort the following foods between refined carbohydrates (simple carbs) and complex carbohydrates.
-
-**Simple carbs (use an image for each food):**
-- White bread ✅
-- Sugar cereal ✅
-- Apple juice ✅
-- Donut ✅
-
-**Complex carbs:**
-- Brown bread ✅
-- Potato ✅
-- Broccoli ✅
-- Banana ✅
-
-**Explanation:** Refined carbohydrates are digested and absorbed quickly, causing a sharp rise in blood glucose. Complex carbohydrates take longer to digest, releasing glucose more slowly.
-
----
 
 ### 1.8 (MC, Difficulty: 2)
 
@@ -139,21 +120,10 @@ _Note to agent: We will use the "Sort the macronutrient" game from the Nutrition
 
 ---
 
-### 1.10 (T/F, Difficulty: 1)
-
-**Statement:** Including protein with carbohydrates hinders digestion and raises blood glucose quickly.
-
-**Answer:** True ✅
-
-**Explanation:** Protein is digested more slowly than carbohydrate. When eaten together, the meal is digested more slowly than carbohydrate alone, supporting better blood glucose balance and steadier energy.
-
----
-
 ### 1.11 (Multi-Select, Difficulty: 2)
 
 **Question:** Fats help your body absorb vitamins _ _ _ and _.
 
-**Select the correct answers:**
 - A ✅
 - D ✅
 - C
@@ -163,24 +133,6 @@ _Note to agent: We will use the "Sort the macronutrient" game from the Nutrition
 
 **Explanation:** Health-promoting fats play a key role in absorbing and storing the fat-soluble vitamins A, D, E and K.
 
----
-
-### 1.12 (Multi-Select, Difficulty: 2)
-
-**Question:** Which of these foods contain health-promoting fats?
-
-**Select all that apply:**
-- Potato chips
-- Avocado ✅
-- Olives ✅
-- Donuts
-- Almonds ✅
-- Olive oil ✅
-- Cookie
-- French fries
-- Salmon ✅
-
-**Explanation:** Essential fats are found in foods like nuts, seeds, salmon, mackerel, avocados, and olive oil. They support brain function and mental health, among many other benefits.
 
 ---
 
@@ -258,7 +210,7 @@ _How does blood sugar work, what controls it, and how does it affect our energy?
 
 ### 2.5 (T/F, Difficulty: 2)
 
-**Statement:** No more than 5% of our daily energy should come from sugars, which equals about 30g.
+**Statement:** No more than 5% of our daily energy intake should come from sugars.
 
 **Answer:** True ✅
 
@@ -276,9 +228,22 @@ _How does blood sugar work, what controls it, and how does it affect our energy?
 
 ---
 
+
+### 3.3 (MC, Difficulty: 2) — Hidden Sugars
+
+**Question:** Which of the following is NOT another name for sugar on a food label?
+
+- A) Dextrose
+- B) Maltodextrin
+- C) Molasses
+- D) Calcium ✅
+
+**Explanation:** Sugar can hide under many names on food labels including dextrose, glucose, fructose, maltose, sucrose, syrup, maltodextrin, and molasses. Calcium is a mineral, not a sugar.
+---
+
 ### 2.7 (Multi-Select, Difficulty: 1)
 
-**Question:** Which steps can help keep blood sugar levels well-managed throughout the day?
+**Question:** What are 8 simple steps to help keep blood sugar levels well-managed throughout the day?
 
 **Select all that apply:**
 - A) Starting the day with breakfast ✅
@@ -287,8 +252,12 @@ _How does blood sugar work, what controls it, and how does it affect our energy?
 - D) Daily exercise ✅
 - E) Dessert after each meal
 - F) Pairing protein with carbs ✅
-- G) Eating fibre-rich foods ✅
+- G) Choosing whole grain, and fibre-rich carbs ✅
 - H) Snacking on sweets
+- I) Staying hydrated ✅ 
+- J) Reducing energy drinks ✅ 
+- K) Regular screen time
+- L) Taking time to de-stress ✅
 
 **Explanation:** Consistent healthy eating habits help to prevent blood sugar spikes and support long-term health.
 
@@ -307,20 +276,40 @@ _How does blood sugar work, what controls it, and how does it affect our energy?
 
 ---
 
-### 2.9 (FitB, Difficulty: 1)
+### 3.5 (Multi-Select, Difficulty: 2) — Hydration
 
-**Fill in the correct words:** Eating something sweet _____ a balanced meal, when your stomach is ______, slows the absorption of ________ into your blood and helps avoid the blood sugar __________.
+**Question:** Being well hydrated improves:
 
-**Drag and drop words:**
-- after
-- full
-- glucose
-- roller coaster
+**Select all that apply:**
+- A) Temperature regulation ✅
+- B) Concentration ✅
+- C) Decision making ✅
+- D) Food flavour
+- E) Sports performance ✅
+- F) Nutrient transport ✅
+
+**Explanation:** Being well hydrated is essential for bodily functions!
 
 ---
----
 
-## Topic 3: Healthy Habits & Smart Choices (7 questions)
+### 3.7 (Multi-Select, Difficulty: 1) — Stress
+
+**Question:** Which activities can help to reduce stress?
+
+**Select all that apply:**
+- Running a marathon
+- Listening to music ✅
+- Sleep ✅
+- Taking an exam
+- Reading ✅
+- Airport
+- Hug ✅
+
+**Explanation:** Finding ways to relax and de-stress is important for managing energy.
+
+---
+## GAME SEction
+## Topic 3: Healthy Habits & Smart Choices  (7 questions)
 
 _Practical tips: drink swaps, hydration, reading labels, and managing stress._
 
@@ -355,79 +344,45 @@ _Practical tips: drink swaps, hydration, reading labels, and managing stress._
 
 **Explanation:** Replacing high sugar drinks can help stabilize insulin levels and provide steadier energy levels.
 
----
 
-### 3.3 (MC, Difficulty: 2) — Hidden Sugars
+### 1.7 (DnD Sort, Difficulty: 2)
 
-**Question:** Which of the following is NOT another name for sugar on a food label?
+**Question:** Sort the following foods between refined carbohydrates (simple carbs) and complex carbohydrates.
 
-- A) Dextrose
-- B) Maltodextrin
-- C) Molasses
-- D) Calcium ✅
+**Simple carbs (use an image for each food):**
+- White bread ✅
+- Sugar cereal ✅
+- Apple juice ✅
+- Donut ✅
 
-**Explanation:** Sugar can hide under many names on food labels including dextrose, glucose, fructose, maltose, sucrose, syrup, maltodextrin, and molasses. Calcium is a mineral, not a sugar.
+**Complex carbs:**
+- Brown bread ✅
+- Potato ✅
+- Broccoli ✅
+- Banana ✅
 
----
+**Explanation:** Refined carbohydrates are digested and absorbed quickly, causing a sharp rise in blood glucose. Complex carbohydrates take longer to digest, releasing glucose more slowly.
 
-### 3.4 (MC, Difficulty: 3) — Food Labels
-
-**Question:** When reading a food label, how many grams of sugar per 100g is considered "high in sugar"?
-
-- A) 10g per 100g ✅
-- B) 5g per 100g
-- C) 2g per 100g
-- D) 20g per 100g
-
-**Explanation:** As a rough guide, 10g of sugar per 100g is considered high in sugar, while 2g per 100g is considered low. One teaspoon of sugar equals about 4g.
 
 ---
 
-### 3.5 (Multi-Select, Difficulty: 2) — Hydration
+### 1.12 (Multi-Select, Difficulty: 2)
 
-**Question:** Being well hydrated improves:
+**Question:** Which of these foods contain health-promoting fats?
 
 **Select all that apply:**
-- A) Temperature regulation ✅
-- B) Concentration ✅
-- C) Decision making ✅
-- D) Food flavour
-- E) Sports performance ✅
-- F) Nutrient transport ✅
+- Potato chips
+- Avocado ✅
+- Olives ✅
+- Donuts
+- Almonds ✅
+- Olive oil ✅
+- Cookie
+- French fries
+- Salmon ✅
 
-**Explanation:** Being well hydrated is essential for bodily functions!
+**Explanation:** Essential fats are found in foods like nuts, seeds, salmon, mackerel, avocados, and olive oil. They support brain function and mental health, among many other benefits.
 
----
-
-### 3.6 (MC, Difficulty: 1) — Hydration
-
-**Question:** About what percentage of our body is made of water?
-
-- A) 20%
-- B) 40%
-- C) 60% ✅
-- D) 80%
-
-**Explanation:** About 60% of our body is made of water. We lose water through sweat, especially during exercise and hot weather. Aim for 6-8 glasses or 1.2 litres of water every day.
-
----
-
-### 3.7 (Multi-Select, Difficulty: 1) — Stress
-
-**Question:** Which activities can help to reduce stress?
-
-**Select all that apply:**
-- Running a marathon
-- Listening to music ✅
-- Sleep ✅
-- Taking an exam
-- Reading ✅
-- Airport
-- Hug ✅
-
-**Explanation:** Finding ways to relax and de-stress is important for managing energy.
-
----
 ---
 
 ## Notes for Future Activity Types
@@ -439,26 +394,17 @@ _Practical tips: drink swaps, hydration, reading labels, and managing stress._
 
 ### Create-It Ideas
 
-- Build a balanced breakfast plate (drag carbs, protein, and fats onto a plate)
+- Build a balanced breakfast plate (drag carbs--starchy carbs plus fibre-rich carbs), protein, and fats onto a plate)
 - Create a lower-sugar drink (drag ingredients into a cup/bottle)
-- Create a DIY sports drink
 
 ### Order-It Ideas
 
 - Put the blood sugar regulation process in order (eat carbs → broken down to glucose → blood sugar rises → insulin released → glucose stored → blood sugar returns to normal)
 - Put the "blood sugar roller coaster" cycle in order
 
-### Fill-in-the-Blank Ideas
-
-- "Carbohydrates are broken down into a sugar called ______." (glucose)
-- "Blood sugar levels are regulated by the hormone ______." (insulin)
-- "Insulin is released from the ______." (pancreas)
-
 ### Matching Pairs Ideas
 
-- Match each of the 9 steps to its key benefit
 - Match foods to their macronutrient group
-- Match hydration signs to what they mean
 
 ### Scenario Ideas
 

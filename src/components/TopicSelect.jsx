@@ -1,34 +1,22 @@
 import { useNavigate } from 'react-router-dom'
 import './TopicSelect.css'
 
-const TOPICS = [
+const SECTIONS = [
   {
-    id: 'macronutrients',
-    title: 'Macronutrients & Balanced Eating',
-    description: 'What are macronutrients, what do they do, and how do we eat well?',
-    icon: '⚡',
-    color: 'var(--color-yellow)',
+    id: 'quiz',
+    title: 'Take the Quiz!',
+    description: 'Test your knowledge on macronutrients, blood sugar, and healthy habits.',
+    icon: '🧠',
+    color: 'var(--color-blue)',
+    enabled: true,
   },
   {
-    id: 'bloodSugar',
-    title: 'Blood Sugar & Energy',
-    description: 'How does blood sugar work, what controls it, and how does it affect our energy?',
-    icon: '🩸',
-    color: 'var(--color-red)',
-  },
-  {
-    id: 'healthyHabits',
-    title: 'Healthy Habits & Smart Choices',
-    description: 'Drink swaps, hydration, reading labels, and managing stress.',
-    icon: '🏆',
+    id: 'games',
+    title: 'Play Games',
+    description: 'Sort foods, create drinks, and swap carbs in fun mini-games.',
+    icon: '🎮',
     color: 'var(--color-green)',
-  },
-  {
-    id: 'fullChallenge',
-    title: 'Full Challenge',
-    description: 'Take on every topic! The ultimate test of your nutrition knowledge.',
-    icon: '🌟',
-    color: 'var(--color-orange)',
+    enabled: false,
   },
 ]
 
@@ -37,20 +25,24 @@ export default function TopicSelect() {
 
   return (
     <div className="topic-select animate-in">
-      <h1 className="topic-select-title">Choose Your Challenge</h1>
-      <p className="topic-select-subtitle">Pick a topic to test your knowledge</p>
+      <h1 className="topic-select-title">What would you like to do?</h1>
+      <p className="topic-select-subtitle">Choose an activity to get started</p>
 
       <div className="topic-grid">
-        {TOPICS.map((topic) => (
+        {SECTIONS.map((section) => (
           <button
-            key={topic.id}
-            className="topic-card card"
-            onClick={() => navigate(`/play/${topic.id}`)}
-            style={{ '--topic-color': topic.color }}
+            key={section.id}
+            className={`topic-card card ${!section.enabled ? 'topic-card-disabled' : ''}`}
+            onClick={() => section.enabled && navigate(`/play/${section.id}`)}
+            style={{ '--topic-color': section.color }}
+            disabled={!section.enabled}
           >
-            <span className="topic-icon">{topic.icon}</span>
-            <h2 className="topic-card-title">{topic.title}</h2>
-            <p className="topic-card-description">{topic.description}</p>
+            <span className="topic-icon">{section.icon}</span>
+            <h2 className="topic-card-title">{section.title}</h2>
+            <p className="topic-card-description">{section.description}</p>
+            {!section.enabled && (
+              <span className="topic-coming-soon">Coming Soon</span>
+            )}
           </button>
         ))}
       </div>
