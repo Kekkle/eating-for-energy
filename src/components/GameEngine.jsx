@@ -93,11 +93,16 @@ export default function GameEngine() {
   return (
     <div className="game-engine animate-in">
       <div className="game-header">
-        <ProgressBar current={currentIndex} total={questions.length} />
-        <div className="game-header-stats">
-          <ScoreDisplay score={score} />
-          <StreakCounter streak={streak} />
+        <div className="game-header-top">
+          <button className="btn btn-secondary game-home-btn" onClick={() => navigate('/topics')}>
+            ← Home
+          </button>
+          <div className="game-header-stats">
+            <ScoreDisplay score={score} />
+            <StreakCounter streak={streak} />
+          </div>
         </div>
+        <ProgressBar current={currentIndex} total={questions.length} />
       </div>
 
       <div className="game-question-area" key={`${currentIndex}-${replayCount}`}>

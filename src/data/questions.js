@@ -1,4 +1,4 @@
-const quiz = [
+const macroQuestions = [
   {
     type: 'multiple-choice',
     question: 'Which macronutrient is the body\'s preferred source of energy?',
@@ -79,25 +79,12 @@ const quiz = [
   },
   {
     type: 'multi-select',
-    question: 'Fats help your body absorb vitamins _ _ _ and _. Select the correct vitamins.',
+    question: 'Fats help your body absorb vitamins _ _ _ and _.',
     instruction: 'Select the correct answers',
     options: ['A', 'D', 'C', 'E', 'B12', 'K'],
     answers: [0, 1, 3, 5],
     explanation: 'Health-promoting fats play a key role in absorbing and storing the fat-soluble vitamins A, D, E and K.',
     difficulty: 2,
-  },
-  {
-    type: 'multiple-choice',
-    question: 'Why is it good to eat fruits and vegetables of many different colours?',
-    options: [
-      'It makes your plate look nicer',
-      'Different colours provide different vitamins and minerals',
-      'Colourful foods always taste better',
-      'It doesn\'t matter what colour they are',
-    ],
-    answer: 1,
-    explanation: 'Different types and colours of fruits and vegetables provide different vitamins and minerals. The more different colours you eat, the wider the range of nutrients you get.',
-    difficulty: 1,
   },
   {
     type: 'multiple-choice',
@@ -114,6 +101,22 @@ const quiz = [
     answer: 1,
     explanation: 'Yes! That\'s why blood sugar levels are tightly regulated by the hormone insulin.',
     difficulty: 2,
+  },
+]
+
+const otherQuestions = [
+  {
+    type: 'multiple-choice',
+    question: 'Why is it good to eat fruits and vegetables of many different colours?',
+    options: [
+      'It makes your plate look nicer',
+      'Different colours provide different vitamins and minerals',
+      'Colourful foods always taste better',
+      'It doesn\'t matter what colour they are',
+    ],
+    answer: 1,
+    explanation: 'Different types and colours of fruits and vegetables provide different vitamins and minerals. The more different colours you eat, the wider the range of nutrients you get.',
+    difficulty: 1,
   },
   {
     type: 'multiple-choice',
@@ -148,14 +151,6 @@ const quiz = [
     statement: 'Dehydration can impact blood sugar regulation.',
     answer: true,
     explanation: 'Reduced water in the bloodstream increases the concentration of glucose. Drinking water consistently helps to keep blood sugar in a healthy range.',
-    difficulty: 2,
-  },
-  {
-    type: 'multiple-choice',
-    question: 'Which of the following is NOT another name for sugar on a food label?',
-    options: ['Dextrose', 'Maltodextrin', 'Molasses', 'Calcium'],
-    answer: 3,
-    explanation: 'Sugar can hide under many names on food labels including dextrose, glucose, fructose, maltose, sucrose, syrup, maltodextrin, and molasses. Calcium is a mineral, not a sugar.',
     difficulty: 2,
   },
   {
@@ -209,24 +204,9 @@ const quiz = [
     explanation: 'Being well hydrated is essential for bodily functions!',
     difficulty: 2,
   },
-  {
-    type: 'multi-select',
-    question: 'Which activities can help to reduce stress?',
-    instruction: 'Select all that apply',
-    options: [
-      'Running a marathon',
-      'Listening to music',
-      'Sleep',
-      'Taking an exam',
-      'Reading',
-      'Airport',
-      'Hug',
-    ],
-    answers: [1, 2, 4, 6],
-    explanation: 'Finding ways to relax and de-stress is important for managing energy.',
-    difficulty: 1,
-  },
 ]
+
+const quiz = [...macroQuestions, ...otherQuestions]
 
 const games = [
   {
@@ -393,8 +373,24 @@ const games = [
   },
 ]
 
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 export function getQuestionsForTopic(topicId) {
-  if (topicId === 'quiz') return quiz
+  if (topicId === 'quiz') {
+    const first5 = shuffle(macroQuestions).slice(0, 5)
+    const remaining = [
+      ...macroQuestions.filter((q) => !first5.includes(q)),
+      ...otherQuestions,
+    ]
+    return [...first5, ...shuffle(remaining)]
+  }
   if (topicId === 'games') return games
   if (topicId === 'fullChallenge') return [...quiz, ...games]
   return []
