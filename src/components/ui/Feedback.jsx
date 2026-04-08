@@ -1,6 +1,6 @@
 import './Feedback.css'
 
-export default function Feedback({ data, onNext }) {
+export default function Feedback({ data, onNext, onReplay }) {
   if (!data) return null
 
   const { isCorrect, explanation, earnedPoints, streak } = data
@@ -27,9 +27,16 @@ export default function Feedback({ data, onNext }) {
           <p className="feedback-explanation">{explanation}</p>
         )}
 
-        <button className="btn btn-primary feedback-next" onClick={onNext}>
-          {isCorrect ? 'Keep Going!' : 'Next Question'}
-        </button>
+        <div className="feedback-actions">
+          <button className="btn btn-primary feedback-next" onClick={onNext}>
+            {isCorrect ? 'Keep Going!' : 'Next Question'}
+          </button>
+          {onReplay && (
+            <button className="btn btn-secondary feedback-replay" onClick={onReplay}>
+              Play it again
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

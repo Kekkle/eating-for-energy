@@ -17,6 +17,7 @@ const initialState = {
   showFeedback: false,
   feedbackData: null,
   isComplete: false,
+  replayCount: 0,
 }
 
 function gameReducer(state, action) {
@@ -72,6 +73,40 @@ function gameReducer(state, action) {
       }
     }
 
+    case 'SKIP_QUESTION': {
+      const nextIndex = state.currentIndex + 1
+      const isComplete = nextIndex >= state.questions.length
+
+      return {
+        ...state,
+        currentIndex: nextIndex,
+        showFeedback: false,
+        feedbackData: null,
+        isComplete,
+      }
+    }
+
+    case 'PREV_QUESTION': {
+      if (state.currentIndex <= 0) return state
+
+      return {
+        ...state,
+        currentIndex: state.currentIndex - 1,
+        showFeedback: false,
+        feedbackData: null,
+        replayCount: state.replayCount + 1,
+      }
+    }
+
+    case 'REPLAY_CURRENT': {
+      return {
+        ...state,
+        showFeedback: false,
+        feedbackData: null,
+        replayCount: state.replayCount + 1,
+      }
+    }
+
     case 'RESET': {
       return initialState
     }
@@ -101,6 +136,18 @@ export function GameProvider({ children }) {
     dispatch({ type: 'NEXT_QUESTION' })
   }, [])
 
+  const skipQuestion = useCallback(() => {
+    dispatch({ type: 'SKIP_QUESTION' })
+  }, [])
+
+  const prevQuestion = useCallback(() => {
+    dispatch({ type: 'PREV_QUESTION' })
+  }, [])
+
+  const replayCurrent = useCallback(() => {
+    dispatch({ type: 'REPLAY_CURRENT' })
+  }, [])
+
   const resetGame = useCallback(() => {
     dispatch({ type: 'RESET' })
   }, [])
@@ -110,6 +157,9 @@ export function GameProvider({ children }) {
     startGame,
     submitAnswer,
     nextQuestion,
+    skipQuestion,
+    prevQuestion,
+    replayCurrent,
     resetGame,
     totalQuestions: state.questions.length,
     progress:

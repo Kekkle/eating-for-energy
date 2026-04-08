@@ -13,6 +13,9 @@ import FillInBlank from './activities/FillInBlank'
 import DragSort from './activities/DragSort'
 import DragMatch from './activities/DragMatch'
 import CreateDrink from './activities/CreateDrink'
+import EmojiSelect from './activities/EmojiSelect'
+import BuildPlate from './activities/BuildPlate'
+import OrderIt from './activities/OrderIt'
 import './GameEngine.css'
 
 const ACTIVITY_COMPONENTS = {
@@ -23,6 +26,9 @@ const ACTIVITY_COMPONENTS = {
   'drag-sort': DragSort,
   'drag-match': DragMatch,
   'create-drink': CreateDrink,
+  'emoji-select': EmojiSelect,
+  'build-plate': BuildPlate,
+  'order-it': OrderIt,
 }
 
 export default function GameEngine() {
@@ -36,9 +42,13 @@ export default function GameEngine() {
     showFeedback,
     feedbackData,
     isComplete,
+    replayCount,
     startGame,
     submitAnswer,
     nextQuestion,
+    skipQuestion,
+    prevQuestion,
+    replayCurrent,
   } = useGame()
 
   useEffect(() => {
@@ -90,7 +100,7 @@ export default function GameEngine() {
         </div>
       </div>
 
-      <div className="game-question-area" key={currentIndex}>
+      <div className="game-question-area" key={`${currentIndex}-${replayCount}`}>
         <ActivityComponent
           question={currentQuestion}
           onAnswer={(isCorrect, explanation, correctAnswer) =>
@@ -99,8 +109,21 @@ export default function GameEngine() {
         />
       </div>
 
+      {!showFeedback && (
+        <div className="game-nav">
+          {currentIndex > 0 && (
+            <button className="btn btn-secondary game-nav-btn" onClick={prevQuestion}>
+              ← Back
+            </button>
+          )}
+          <button className="btn btn-secondary game-nav-btn game-nav-skip" onClick={skipQuestion}>
+            Skip →
+          </button>
+        </div>
+      )}
+
       {showFeedback && (
-        <Feedback data={feedbackData} onNext={nextQuestion} />
+        <Feedback data={feedbackData} onNext={nextQuestion} onReplay={replayCurrent} />
       )}
     </div>
   )

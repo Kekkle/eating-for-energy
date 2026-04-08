@@ -16,7 +16,7 @@ const SECTIONS = [
     description: 'Sort foods, create drinks, and swap carbs in fun mini-games.',
     icon: '🎮',
     color: 'var(--color-green)',
-    enabled: false,
+    enabled: true,
   },
 ]
 

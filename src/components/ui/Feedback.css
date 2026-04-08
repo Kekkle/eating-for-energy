@@ -68,6 +68,17 @@
   border-radius: var(--radius-sm);
 }
 
+.feedback-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .feedback-next {
   width: 100%;
+}
+
+.feedback-replay {
+  width: 100%;
+  font-size: 0.9rem;
 }

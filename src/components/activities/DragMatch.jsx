@@ -1,33 +1,102 @@
 import { useState, useCallback } from 'react'
+import {
+  DndContext,
+  useDraggable,
+  useDroppable,
+  DragOverlay,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core'
 import './DragMatch.css'
+import './emoji-tile.css'
+
+function DraggableFood({ id, emoji, disabled, matched, result, onTap }) {
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id,
+    disabled: disabled || !!matched,
+  })
+
+  let stateClass = ''
+  if (isDragging) stateClass = 'emoji-tile-dragging'
+  else if (result === true) stateClass = 'emoji-tile-correct'
+  else if (result === false) stateClass = 'emoji-tile-incorrect'
+  else if (matched) stateClass = 'emoji-tile-used'
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`emoji-tile ${stateClass}`}
+      onClick={() => !disabled && !matched && onTap(id)}
+      {...listeners}
+      {...attributes}
+    >
+      <span className="emoji-tile-icon">{emoji}</span>
+    </div>
+  )
+}
+
+function DroppableTarget({ id, emoji, isOver, matched, result, onTap }) {
+  const { setNodeRef } = useDroppable({ id })
+
+  let stateClass = ''
+  if (result === true) stateClass = 'emoji-tile-correct'
+  else if (result === false) stateClass = 'emoji-tile-incorrect'
+  else if (matched) stateClass = 'emoji-tile-selected'
+  else if (isOver) stateClass = 'dm-target-hover'
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`emoji-tile ${stateClass}`}
+      onClick={onTap}
+      style={{ cursor: onTap ? 'pointer' : 'default' }}
+    >
+      <span className="emoji-tile-icon">{emoji}</span>
+    </div>
+  )
+}
 
 export default function DragMatch({ question, onAnswer }) {
-  const [selectedFrom, setSelectedFrom] = useState(null)
   const [matches, setMatches] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [results, setResults] = useState(null)
+  const [activeId, setActiveId] = useState(null)
+  const [selectedFrom, setSelectedFrom] = useState(null)
+  const [overId, setOverId] = useState(null)
 
-  const shuffledTargets = useState(() =>
+  const [shuffledTargets] = useState(() =>
     [...question.pairs.map((p) => p.to)].sort(() => Math.random() - 0.5)
-  )[0]
-
-  const handleFromClick = useCallback(
-    (fromItem) => {
-      if (submitted) return
-      setSelectedFrom((prev) => (prev === fromItem ? null : fromItem))
-    },
-    [submitted]
   )
 
-  const handleToClick = useCallback(
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { distance: 8 } })
+  )
+
+  const pairByFrom = Object.fromEntries(question.pairs.map((p) => [p.from, p]))
+  const pairByTo = Object.fromEntries(question.pairs.map((p) => [p.to, p]))
+  const reverseMatches = Object.fromEntries(
+    Object.entries(matches).map(([k, v]) => [v, k])
+  )
+
+  const handleTapFrom = useCallback(
+    (fromItem) => {
+      if (submitted || matches[fromItem]) return
+      setSelectedFrom((prev) => (prev === fromItem ? null : fromItem))
+    },
+    [submitted, matches]
+  )
+
+  const handleTapTo = useCallback(
     (toItem) => {
       if (submitted || !selectedFrom) return
 
-      const existing = Object.entries(matches).find(([, v]) => v === toItem)
-      if (existing) {
+      if (reverseMatches[toItem]) {
         setMatches((prev) => {
           const next = { ...prev }
-          delete next[existing[0]]
+          delete next[reverseMatches[toItem]]
           return next
         })
       }
@@ -35,7 +104,7 @@ export default function DragMatch({ question, onAnswer }) {
       setMatches((prev) => ({ ...prev, [selectedFrom]: toItem }))
       setSelectedFrom(null)
     },
-    [submitted, selectedFrom, matches]
+    [submitted, selectedFrom, reverseMatches]
   )
 
   const clearMatch = useCallback(
@@ -49,6 +118,29 @@ export default function DragMatch({ question, onAnswer }) {
     },
     [submitted]
   )
+
+  const handleDragStart = (event) => {
+    setActiveId(event.active.id)
+    setSelectedFrom(null)
+  }
+  const handleDragOver = (event) => setOverId(event.over?.id || null)
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event
+    setActiveId(null)
+    setOverId(null)
+
+    if (over && pairByTo[over.id]) {
+      if (reverseMatches[over.id]) {
+        setMatches((prev) => {
+          const next = { ...prev }
+          delete next[reverseMatches[over.id]]
+          return next
+        })
+      }
+      setMatches((prev) => ({ ...prev, [active.id]: over.id }))
+    }
+  }
 
   const handleSubmit = () => {
     if (Object.keys(matches).length < question.pairs.length || submitted) return
@@ -68,88 +160,88 @@ export default function DragMatch({ question, onAnswer }) {
     onAnswer(allCorrect, question.explanation)
   }
 
+  const activePair = activeId ? pairByFrom[activeId] : null
+
   return (
-    <div className="dm-container card">
-      <h2 className="dm-question">{question.question}</h2>
-      <p className="dm-instruction">Tap a food on the left, then tap its healthier swap on the right.</p>
+    <DndContext
+      sensors={sensors}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
+    >
+      <div className="dm-container card">
+        <h2 className="dm-question">{question.question}</h2>
+        <p className="game-instruction">{question.instruction}</p>
 
-      <div className="dm-pairs">
-        <div className="dm-column">
-          <p className="dm-column-label">Swap this...</p>
-          {question.pairs.map((pair) => (
-            <button
-              key={pair.from}
-              className={`dm-item dm-from ${
-                selectedFrom === pair.from ? 'dm-item-active' : ''
-              } ${matches[pair.from] ? 'dm-item-matched' : ''} ${
-                results
-                  ? results[pair.from]
-                    ? 'dm-item-correct'
-                    : 'dm-item-incorrect'
-                  : ''
-              }`}
-              onClick={() =>
-                matches[pair.from] && !submitted
-                  ? clearMatch(pair.from)
-                  : handleFromClick(pair.from)
-              }
-              disabled={submitted}
-            >
-              {pair.from}
-              {matches[pair.from] && !submitted && (
-                <span className="dm-clear">×</span>
-              )}
-              {results && (
-                <span className="dm-result-icon">
-                  {results[pair.from] ? '✓' : '✗'}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+        <div className="dm-game-area">
+          <div className="dm-column">
+            {question.pairs.map((pair) => (
+              <div key={pair.from} className="dm-tile-slot">
+                <DraggableFood
+                  id={pair.from}
+                  emoji={pair.fromEmoji}
+                  disabled={submitted}
+                  matched={matches[pair.from]}
+                  result={results ? results[pair.from] : null}
+                  onTap={handleTapFrom}
+                />
+                {matches[pair.from] && !submitted && (
+                  <button className="dm-undo" onClick={() => clearMatch(pair.from)}>
+                    ×
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
 
-        <div className="dm-connector">
-          {question.pairs.map((pair) => (
-            <div
-              key={pair.from}
-              className={`dm-line ${matches[pair.from] ? 'dm-line-active' : ''}`}
-            >
-              {matches[pair.from] ? '→' : '·'}
-            </div>
-          ))}
-        </div>
-
-        <div className="dm-column">
-          <p className="dm-column-label">...for this</p>
-          {shuffledTargets.map((target) => {
-            const matchedBy = Object.entries(matches).find(([, v]) => v === target)
-            return (
-              <button
-                key={target}
-                className={`dm-item dm-to ${
-                  matchedBy ? 'dm-item-matched' : ''
-                } ${selectedFrom ? 'dm-item-target' : ''} ${
-                  results && matchedBy
-                    ? results[matchedBy[0]]
-                      ? 'dm-item-correct'
-                      : 'dm-item-incorrect'
-                    : ''
-                }`}
-                onClick={() => handleToClick(target)}
-                disabled={submitted || !selectedFrom}
+          <div className="dm-arrows">
+            {question.pairs.map((pair) => (
+              <div
+                key={pair.from}
+                className={`dm-arrow ${matches[pair.from] ? 'dm-arrow-active' : ''}`}
               >
-                {target}
-              </button>
-            )
-          })}
+                →
+              </div>
+            ))}
+          </div>
+
+          <div className="dm-column">
+            {shuffledTargets.map((targetName) => {
+              const pair = pairByTo[targetName]
+              const matchedFrom = reverseMatches[targetName]
+              return (
+                <DroppableTarget
+                  key={targetName}
+                  id={targetName}
+                  emoji={pair.toEmoji}
+                  isOver={overId === targetName}
+                  matched={!!matchedFrom}
+                  result={results && matchedFrom ? results[matchedFrom] : null}
+                  onTap={
+                    !submitted && selectedFrom && !matchedFrom
+                      ? () => handleTapTo(targetName)
+                      : undefined
+                  }
+                />
+              )
+            })}
+          </div>
         </div>
+
+        {Object.keys(matches).length === question.pairs.length && !submitted && (
+          <button className="btn btn-primary dm-submit" onClick={handleSubmit}>
+            Submit Answer
+          </button>
+        )}
       </div>
 
-      {Object.keys(matches).length === question.pairs.length && !submitted && (
-        <button className="btn btn-primary dm-submit" onClick={handleSubmit}>
-          Submit Answer
-        </button>
-      )}
-    </div>
+      <DragOverlay dropAnimation={null}>
+        {activePair && (
+          <div className="emoji-tile-overlay">
+            <span className="emoji-tile-icon">{activePair.fromEmoji}</span>
+          </div>
+        )}
+      </DragOverlay>
+    </DndContext>
   )
 }

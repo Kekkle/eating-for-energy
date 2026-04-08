@@ -53,6 +53,15 @@ These may change as the project evolves. Always refer to `PROJECT_PLAN.md` for t
 - Blood sugar regulation
 - 9 tips for eating for energy
 
+## Visual Style Guide -- Emoji Games
+
+- Emoji icon grids must always use **fixed 4-column rows** (`grid-template-columns: repeat(4, 72px)`) so icons stack evenly
+- Drop zones in sorting games should also use 4-column grids where space allows
+- Never use `auto-fill` for emoji grids -- always specify the exact column count for even alignment
+- Each emoji tile is 72×72px with a 16px border-radius
+- Emoji font size is 2.2rem inside tiles
+- All games should be primarily image/emoji-based with minimal text
+
 ## Key Conventions
 
 - All quiz content goes in `src/data/questions.js` as structured data -- never hardcode questions in components

@@ -24,3 +24,19 @@
   flex-direction: column;
   animation: slideUp 0.35s ease-out;
 }
+
+.game-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.game-nav-btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+}
+
+.game-nav-skip {
+  margin-left: auto;
+}
