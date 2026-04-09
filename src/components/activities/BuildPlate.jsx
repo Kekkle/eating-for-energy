@@ -47,6 +47,8 @@ function DroppablePlate({ children, isOver }) {
 }
 
 const GROUP_LABELS = {
+  'starchy-carbs': '🌾',
+  'fibre-carbs': '🥬',
   carbs: '🌾',
   protein: '🍗',
   fats: '🧈',
@@ -179,7 +181,7 @@ export default function BuildPlate({ question, onAnswer }) {
 
         {plate.length > 0 && !submitted && (
           <button className="btn btn-primary bp-submit" onClick={handleSubmit}>
-            Serve Breakfast!
+            {question.submitLabel || 'Serve it up!'}
           </button>
         )}
       </div>

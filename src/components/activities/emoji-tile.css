@@ -105,4 +105,5 @@
   color: var(--color-text-light);
   font-style: italic;
   text-align: center;
+  white-space: pre-line;
 }

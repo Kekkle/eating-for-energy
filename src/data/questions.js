@@ -1,12 +1,4 @@
-const macroQuestions = [
-  {
-    type: 'multiple-choice',
-    question: 'Which macronutrient is the body\'s preferred source of energy?',
-    options: ['Protein', 'Carbohydrates', 'Fat', 'Vitamins'],
-    answer: 1,
-    explanation: 'Carbohydrates are broken down into glucose which fuels every cell, especially the brain.',
-    difficulty: 1,
-  },
+const introQuestions = [
   {
     type: 'multiple-choice',
     question: 'Why are carbohydrates, protein, and fat called "macronutrients"?',
@@ -20,6 +12,30 @@ const macroQuestions = [
     explanation: 'Macro means large! Macronutrients are nutrients we consume in the largest quantities compared to other nutrients.',
     difficulty: 1,
   },
+  {
+    type: 'multiple-choice',
+    question: 'Which macronutrient is the body\'s preferred source of energy?',
+    options: ['Protein', 'Carbohydrates', 'Fat', 'Vitamins'],
+    answer: 1,
+    explanation: 'Carbohydrates are broken down into glucose which fuels every cell, especially the brain.',
+    difficulty: 1,
+  },
+  {
+    type: 'multiple-choice',
+    question: 'Why is it a good idea to eat a source of protein with every meal?',
+    options: [
+      'Protein tastes better than other foods',
+      'Protein takes longer to break down, giving gradual energy release',
+      'Protein has more calories',
+      'Protein only helps with sleep',
+    ],
+    answer: 1,
+    explanation: 'Protein digests more slowly than carbohydrates, providing gradual energy release and satiety (feeling full).',
+    difficulty: 2,
+  },
+]
+
+const remainingQuestions = [
   {
     type: 'true-or-false',
     statement: 'Fats are a quicker energy source than carbohydrates.',
@@ -47,19 +63,6 @@ const macroQuestions = [
     answer: 2,
     explanation: 'Aiming for 80/20 approach means eating whole foods (veggies, non-processed meats, whole grains) about 80% of the time.',
     difficulty: 1,
-  },
-  {
-    type: 'multiple-choice',
-    question: 'Why is it a good idea to eat a source of protein with every meal?',
-    options: [
-      'Protein tastes better than other foods',
-      'Protein takes longer to break down, giving gradual energy release',
-      'Protein has more calories',
-      'Protein only helps with sleep',
-    ],
-    answer: 1,
-    explanation: 'Protein digests more slowly than carbohydrates, providing gradual energy release and satiety (feeling full).',
-    difficulty: 2,
   },
   {
     type: 'multi-select',
@@ -102,9 +105,6 @@ const macroQuestions = [
     explanation: 'Yes! That\'s why blood sugar levels are tightly regulated by the hormone insulin.',
     difficulty: 2,
   },
-]
-
-const otherQuestions = [
   {
     type: 'multiple-choice',
     question: 'Why is it good to eat fruits and vegetables of many different colours?',
@@ -206,77 +206,9 @@ const otherQuestions = [
   },
 ]
 
-const quiz = [...macroQuestions, ...otherQuestions]
+const quiz = [...introQuestions, ...remainingQuestions]
 
 const games = [
-  {
-    type: 'build-plate',
-    question: 'Build a balanced breakfast plate!',
-    instruction: 'Drag foods onto the plate. Include carbs, protein, and fats.',
-    foods: [
-      { name: 'Toast', emoji: '🍞', group: 'carbs' },
-      { name: 'Porridge', emoji: '🥣', group: 'carbs' },
-      { name: 'Banana', emoji: '🍌', group: 'carbs' },
-      { name: 'Berries', emoji: '🫐', group: 'carbs' },
-      { name: 'Eggs', emoji: '🥚', group: 'protein' },
-      { name: 'Yogurt', emoji: '🥛', group: 'protein' },
-      { name: 'Cheese', emoji: '🧀', group: 'protein' },
-      { name: 'Avocado', emoji: '🥑', group: 'fats' },
-      { name: 'Nuts', emoji: '🥜', group: 'fats' },
-      { name: 'Butter', emoji: '🧈', group: 'fats' },
-      { name: 'Donut', emoji: '🍩', group: 'none' },
-      { name: 'Candy', emoji: '🍬', group: 'none' },
-    ],
-    maxItems: 5,
-    requiredGroups: ['carbs', 'protein', 'fats'],
-    explanation: 'A balanced breakfast should include starchy or fibre-rich carbs for energy, protein for sustained energy and repair, and healthy fats for brain function and vitamin absorption.',
-    difficulty: 1,
-  },
-  {
-    type: 'create-drink',
-    question: 'Create a tasty alternative to sugary fizzy drinks!',
-    instruction: 'Drag ingredients into the blender to create a nutritious drink!',
-    ingredients: [
-      { name: 'Apple juice', emoji: '🍎' },
-      { name: 'Orange juice', emoji: '🍊' },
-      { name: 'Water', emoji: '💧' },
-      { name: 'Lemon', emoji: '🍋' },
-      { name: 'Berries', emoji: '🫐' },
-      { name: 'Mint leaves', emoji: '🍃' },
-      { name: 'Watermelon', emoji: '🍉' },
-      { name: 'Mango juice', emoji: '🥭' },
-    ],
-    maxIngredients: 4,
-    explanation: 'Replacing high sugar drinks can help stabilize insulin levels and provide steadier energy levels.',
-    difficulty: 1,
-  },
-  {
-    type: 'drag-sort',
-    question: 'Sort the foods into simple carbs or complex carbs!',
-    instruction: 'Drag each food into the correct box.',
-    categories: [
-      {
-        name: 'Simple carbs',
-        items: [
-          { name: 'White bread', emoji: '🍞' },
-          { name: 'Ice cream', emoji: '🍦' },
-          { name: 'Apple juice', emoji: '🧃' },
-          { name: 'Donut', emoji: '🍩' },
-        ],
-      },
-      {
-        name: 'Complex carbs',
-        items: [
-          { name: 'Brown bread', emoji: '🍞', filter: 'sepia(70%) saturate(250%) brightness(60%) hue-rotate(-15deg)' },
-          { name: 'Potato', emoji: '🥔' },
-          { name: 'Broccoli', emoji: '🥦' },
-          { name: 'Banana', emoji: '🍌' },
-        ],
-      },
-    ],
-    explanation: 'Refined carbohydrates are digested and absorbed quickly, causing a sharp rise in blood glucose. Complex carbohydrates take longer to digest, releasing glucose more slowly.',
-    difficulty: 2,
-  },
   {
     type: 'drag-sort',
     question: 'Sort the foods into the correct macronutrient group!',
@@ -322,6 +254,24 @@ const games = [
     difficulty: 1,
   },
   {
+    type: 'create-drink',
+    question: 'Create a tasty alternative to sugary fizzy drinks!',
+    instruction: 'Drag ingredients into the blender to create a nutritious drink!',
+    ingredients: [
+      { name: 'Apple juice', emoji: '🍎' },
+      { name: 'Orange juice', emoji: '🍊' },
+      { name: 'Water', emoji: '💧' },
+      { name: 'Lemon', emoji: '🍋' },
+      { name: 'Berries', emoji: '🫐' },
+      { name: 'Mint leaves', emoji: '🍃' },
+      { name: 'Watermelon', emoji: '🍉' },
+      { name: 'Mango juice', emoji: '🥭' },
+    ],
+    maxIngredients: 4,
+    explanation: 'Replacing high sugar drinks can help stabilize insulin levels and provide steadier energy levels.',
+    difficulty: 1,
+  },
+  {
     type: 'emoji-select',
     question: 'Which of these foods contain health-promoting fats?',
     instruction: 'Tap all the foods with healthy fats!',
@@ -337,6 +287,113 @@ const games = [
     ],
     answers: [1, 2, 4, 7],
     explanation: 'Essential fats are found in foods like nuts, seeds, salmon, mackerel, avocados, and olive oil. They support brain function and mental health, among many other benefits.',
+    difficulty: 2,
+  },
+  {
+    type: 'build-plate',
+    question: 'Build a balanced breakfast plate!',
+    instruction: 'Drag foods onto the plate.\nMake sure to include both a starchy carb and a fibre-carb, as well as protein and fat!',
+    submitLabel: 'Serve Breakfast!',
+    foods: [
+      { name: 'Toast', emoji: '🍞', group: 'starchy-carbs' },
+      { name: 'Porridge', emoji: '🥣', group: 'starchy-carbs' },
+      { name: 'Banana', emoji: '🍌', group: 'fibre-carbs' },
+      { name: 'Berries', emoji: '🫐', group: 'fibre-carbs' },
+      { name: 'Eggs', emoji: '🥚', group: 'protein' },
+      { name: 'Yogurt', emoji: '🥛', group: 'protein' },
+      { name: 'Cheese', emoji: '🧀', group: 'protein' },
+      { name: 'Avocado', emoji: '🥑', group: 'fats' },
+      { name: 'Nuts', emoji: '🥜', group: 'fats' },
+      { name: 'Butter', emoji: '🧈', group: 'fats' },
+      { name: 'Donut', emoji: '🍩', group: 'none' },
+      { name: 'Candy', emoji: '🍬', group: 'none' },
+    ],
+    maxItems: 5,
+    requiredGroups: ['starchy-carbs', 'fibre-carbs', 'protein', 'fats'],
+    explanation: 'A balanced breakfast includes a starchy carb (like toast or porridge) for energy, fibre-rich fruit for vitamins, protein for sustained energy, and healthy fats for brain function.',
+    difficulty: 1,
+  },
+  {
+    type: 'build-plate',
+    question: 'Build a balanced lunch plate!',
+    instruction: 'Drag foods onto the plate.\nMake sure to include both a starchy carb and a fibre-carb, as well as protein and fat!',
+    submitLabel: 'Serve Lunch!',
+    foods: [
+      { name: 'Rice', emoji: '🍚', group: 'starchy-carbs' },
+      { name: 'Bread', emoji: '🍞', group: 'starchy-carbs' },
+      { name: 'Kiwi', emoji: '🥝', group: 'fibre-carbs' },
+      { name: 'Watermelon', emoji: '🍉', group: 'fibre-carbs' },
+      { name: 'Tomatoes', emoji: '🍅', group: 'fibre-carbs' },
+      { name: 'Carrots', emoji: '🥕', group: 'fibre-carbs' },
+      { name: 'Lunch meat', emoji: '🥩', group: 'protein' },
+      { name: 'Beans', emoji: '🫘', group: 'protein' },
+      { name: 'Chicken', emoji: '🍗', group: 'protein' },
+      { name: 'Cheese', emoji: '🧀', group: 'protein' },
+      { name: 'Olives', emoji: '🫒', group: 'fats' },
+      { name: 'Butter', emoji: '🧈', group: 'fats' },
+      { name: 'Peanut butter', emoji: '🥜', group: 'fats' },
+      { name: 'Water', emoji: '🥛', group: 'drink' },
+      { name: 'Apple juice', emoji: '🧃', group: 'drink' },
+      { name: 'Chips', emoji: '🍟', group: 'none' },
+    ],
+    maxItems: 6,
+    requiredGroups: ['starchy-carbs', 'fibre-carbs', 'protein', 'fats'],
+    explanation: 'A balanced lunch includes a starchy carb like rice or bread, fibre-rich vegetables or fruit, a source of protein, and healthy fats to keep you going through the afternoon.',
+    difficulty: 1,
+  },
+  {
+    type: 'build-plate',
+    question: 'Build a balanced dinner plate!',
+    instruction: 'Drag foods onto the plate.\nMake sure to include both a starchy carb and a fibre-carb, as well as protein and fat!',
+    submitLabel: 'Serve Dinner!',
+    foods: [
+      { name: 'Rice', emoji: '🍚', group: 'starchy-carbs' },
+      { name: 'Pasta', emoji: '🍝', group: 'starchy-carbs' },
+      { name: 'Salad', emoji: '🥗', group: 'fibre-carbs' },
+      { name: 'Cucumber', emoji: '🥒', group: 'fibre-carbs' },
+      { name: 'Broccoli', emoji: '🥦', group: 'fibre-carbs' },
+      { name: 'Strawberry', emoji: '🍓', group: 'fibre-carbs' },
+      { name: 'Melon', emoji: '🍈', group: 'fibre-carbs' },
+      { name: 'Grapes', emoji: '🍇', group: 'fibre-carbs' },
+      { name: 'Steak', emoji: '🥩', group: 'protein' },
+      { name: 'Chicken', emoji: '🍗', group: 'protein' },
+      { name: 'Fish', emoji: '🐟', group: 'protein' },
+      { name: 'Beans', emoji: '🫘', group: 'protein' },
+      { name: 'Avocado', emoji: '🥑', group: 'fats' },
+      { name: 'Oil', emoji: '🫒', group: 'fats' },
+      { name: 'Apple juice', emoji: '🧃', group: 'drink' },
+      { name: 'Fizzy drink', emoji: '🥤', group: 'none' },
+    ],
+    maxItems: 6,
+    requiredGroups: ['starchy-carbs', 'fibre-carbs', 'protein', 'fats'],
+    explanation: 'A balanced dinner includes a starchy carb like rice or pasta, plenty of fibre-rich vegetables, a good source of protein, and healthy fats. Water or fruit juice are great drink choices too!',
+    difficulty: 1,
+  },
+  {
+    type: 'drag-sort',
+    question: 'Sort the foods into simple carbs or complex carbs!',
+    instruction: 'Drag each food into the correct box.',
+    categories: [
+      {
+        name: 'Simple carbs',
+        items: [
+          { name: 'White bread', emoji: '🍞' },
+          { name: 'Ice cream', emoji: '🍦' },
+          { name: 'Apple juice', emoji: '🧃' },
+          { name: 'Donut', emoji: '🍩' },
+        ],
+      },
+      {
+        name: 'Complex carbs',
+        items: [
+          { name: 'Brown bread', emoji: '🍞', filter: 'sepia(70%) saturate(250%) brightness(60%) hue-rotate(-15deg)' },
+          { name: 'Potato', emoji: '🥔' },
+          { name: 'Broccoli', emoji: '🥦' },
+          { name: 'Banana', emoji: '🍌' },
+        ],
+      },
+    ],
+    explanation: 'Refined carbohydrates are digested and absorbed quickly, causing a sharp rise in blood glucose. Complex carbohydrates take longer to digest, releasing glucose more slowly.',
     difficulty: 2,
   },
   {
@@ -358,7 +415,7 @@ const games = [
   {
     type: 'order-it',
     question: 'Put the blood sugar roller coaster cycle in order!',
-    instruction: 'Drag each step to show what happens with sugary foods.',
+    instruction: 'Drag each step to show what happens when consuming high-sugar foods.',
     steps: [
       { text: 'Eat sugary or refined foods', emoji: '🍩' },
       { text: 'Blood sugar spikes rapidly', emoji: '🚀' },
@@ -384,12 +441,7 @@ function shuffle(arr) {
 
 export function getQuestionsForTopic(topicId) {
   if (topicId === 'quiz') {
-    const first5 = shuffle(macroQuestions).slice(0, 5)
-    const remaining = [
-      ...macroQuestions.filter((q) => !first5.includes(q)),
-      ...otherQuestions,
-    ]
-    return [...first5, ...shuffle(remaining)]
+    return [...shuffle(introQuestions), ...shuffle(remainingQuestions)]
   }
   if (topicId === 'games') return games
   if (topicId === 'fullChallenge') return [...quiz, ...games]
