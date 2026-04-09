@@ -29,7 +29,7 @@ export default function Landing() {
         </p>
         <p className="landing-description">
           Fun quizzes and games about macronutrients, blood sugar, and the
-          9 steps to fuel your best performance.
+          8 steps to fuel your best performance.
         </p>
 
         <button
