@@ -41,7 +41,7 @@ export default function Landing() {
 
         <img
           key={wiggleKey}
-          src="/veggie_thumbsup.png"
+          src={`${import.meta.env.BASE_URL}veggie_thumbsup.png`}
           alt="Veggie thumbs up"
           className="landing-mascot"
           onClick={handleWiggle}
@@ -50,7 +50,7 @@ export default function Landing() {
 
       <div className="landing-logo-wrap">
         <div className="landing-logo-oval">
-          <img src="/health-embrace-logo.png" alt="Health Embrace" />
+          <img src={`${import.meta.env.BASE_URL}health-embrace-logo.png`} alt="Health Embrace" />
         </div>
       </div>
 

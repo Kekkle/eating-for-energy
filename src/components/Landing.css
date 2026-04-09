@@ -23,8 +23,8 @@
   opacity: 0.3;
 }
 
-.deco-1 { top: 6%; left: 10%; font-size: 2.5rem; }
-.deco-2 { top: 18%; right: 12%; font-size: 2rem; }
+.deco-1 { top: 2%; left: 6%; font-size: 2.5rem; }
+.deco-2 { top: 28%; right: 12%; font-size: 2rem; }
 .deco-3 { bottom: 20%; left: 8%; font-size: 2.2rem; display: none; }
 .deco-4 { bottom: 15%; right: 10%; font-size: 1.8rem; }
 
