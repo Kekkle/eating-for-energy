@@ -6,6 +6,13 @@
   padding: 1.5rem 0;
 }
 
+.topic-back-btn {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
 .topic-select-title {
   font-size: clamp(1.8rem, 6vw, 2.5rem);
   font-weight: 800;

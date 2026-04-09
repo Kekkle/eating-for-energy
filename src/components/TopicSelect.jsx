@@ -25,6 +25,9 @@ export default function TopicSelect() {
 
   return (
     <div className="topic-select animate-in">
+      <button className="btn btn-secondary topic-back-btn" onClick={() => navigate('/')}>
+        ← Back
+      </button>
       <h1 className="topic-select-title">What would you like to do?</h1>
       <p className="topic-select-subtitle">Choose an activity to get started</p>
 

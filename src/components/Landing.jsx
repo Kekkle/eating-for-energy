@@ -1,8 +1,14 @@
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Landing.css'
 
 export default function Landing() {
   const navigate = useNavigate()
+  const [wiggleKey, setWiggleKey] = useState(0)
+
+  const handleWiggle = useCallback(() => {
+    setWiggleKey((k) => k + 1)
+  }, [])
 
   return (
     <div className="landing animate-in">
@@ -32,6 +38,20 @@ export default function Landing() {
         >
           Let&rsquo;s Go!
         </button>
+
+        <img
+          key={wiggleKey}
+          src="/veggie_thumbsup.png"
+          alt="Veggie thumbs up"
+          className="landing-mascot"
+          onClick={handleWiggle}
+        />
+      </div>
+
+      <div className="landing-logo-wrap">
+        <div className="landing-logo-oval">
+          <img src="/health-embrace-logo.png" alt="Health Embrace" />
+        </div>
       </div>
 
       <div className="landing-footer">

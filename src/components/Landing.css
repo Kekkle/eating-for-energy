@@ -23,9 +23,9 @@
   opacity: 0.3;
 }
 
-.deco-1 { top: 8%; left: 10%; font-size: 2.5rem; }
-.deco-2 { top: 12%; right: 12%; font-size: 2rem; }
-.deco-3 { bottom: 20%; left: 8%; font-size: 2.2rem; }
+.deco-1 { top: 6%; left: 10%; font-size: 2.5rem; }
+.deco-2 { top: 18%; right: 12%; font-size: 2rem; }
+.deco-3 { bottom: 20%; left: 8%; font-size: 2.2rem; display: none; }
 .deco-4 { bottom: 15%; right: 10%; font-size: 1.8rem; }
 
 .landing-content {
@@ -66,10 +66,53 @@
   letter-spacing: 0.02em;
 }
 
+.landing-mascot {
+  width: 240px;
+  height: auto;
+  margin: 2.25rem auto 0;
+  animation: wiggle 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(8deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(6deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.landing-logo-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.landing-logo-oval {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.landing-logo-oval img {
+  width: 64px;
+  height: auto;
+  object-fit: contain;
+}
+
 .landing-footer {
   position: relative;
   z-index: 1;
-  margin-top: auto;
 }
 
 .landing-footer p {

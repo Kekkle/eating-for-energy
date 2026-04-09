@@ -127,8 +127,8 @@ img {
 
 .btn-secondary {
   background-color: var(--color-bg-white);
-  color: var(--color-charcoal);
-  border: 2px solid var(--color-charcoal);
+  color: var(--color-orange);
+  border: 2px solid var(--color-orange);
 }
 
 .card {
