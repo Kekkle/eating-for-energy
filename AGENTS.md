@@ -51,7 +51,7 @@ These may change as the project evolves. Always refer to `PROJECT_PLAN.md` for t
 - Macronutrients (carbohydrates, protein, fat)
 - How we get energy from food
 - Blood sugar regulation
-- 9 tips for eating for energy
+- 8 steps for eating for energy
 
 ## Visual Style Guide -- Emoji Games
 
@@ -84,6 +84,6 @@ These may change as the project evolves. Always refer to `PROJECT_PLAN.md` for t
 When webinar slide images are provided:
 
 1. Extract all visible text from each slide
-2. Identify the 9 energy tips, key nutritional facts, and any diagrams/processes
+2. Identify the 8 energy steps, key nutritional facts, and any diagrams/processes
 3. Note the color palette, fonts, and visual style for branding
 4. Use extracted content to populate `src/data/questions.js`

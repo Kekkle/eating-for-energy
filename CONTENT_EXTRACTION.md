@@ -260,7 +260,7 @@ From base to top:
 
 ---
 
-## Summary of the 9 Steps (slide 27)
+## Summary of the 8 Steps (slide 27)
 
 1. Get choosy about carbohydrate sources
 2. Eat a source of protein with every meal

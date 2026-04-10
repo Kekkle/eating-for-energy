@@ -444,7 +444,7 @@ export function getQuestionsForTopic(topicId) {
     return [...shuffle(introQuestions), ...shuffle(remainingQuestions)]
   }
   if (topicId === 'games') return games
-  if (topicId === 'fullChallenge') return [...quiz, ...games]
+
   return []
 }
 

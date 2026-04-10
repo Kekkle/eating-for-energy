@@ -9,9 +9,7 @@ import Feedback from './ui/Feedback'
 import MultipleChoice from './activities/MultipleChoice'
 import TrueOrFalse from './activities/TrueOrFalse'
 import MultiSelect from './activities/MultiSelect'
-import FillInBlank from './activities/FillInBlank'
 import DragSort from './activities/DragSort'
-import DragMatch from './activities/DragMatch'
 import CreateDrink from './activities/CreateDrink'
 import EmojiSelect from './activities/EmojiSelect'
 import BuildPlate from './activities/BuildPlate'
@@ -22,9 +20,7 @@ const ACTIVITY_COMPONENTS = {
   'multiple-choice': MultipleChoice,
   'true-or-false': TrueOrFalse,
   'multi-select': MultiSelect,
-  'fill-in-blank': FillInBlank,
   'drag-sort': DragSort,
-  'drag-match': DragMatch,
   'create-drink': CreateDrink,
   'emoji-select': EmojiSelect,
   'build-plate': BuildPlate,

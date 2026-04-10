@@ -2,7 +2,7 @@
 
 ## Overview
 
-Build a mobile-friendly, static gamified quiz website for the "Eating for Energy" webinar. This is targeted to children/teens (ages 9-15) who play sports. It will feature 8 activity types across the webinar topics (macronutrients, how do we get energy, blood sugar regulation, 9 energy tips), with points, progress tracking, and fun feedback -- all deployable for free with no backend.
+Build a mobile-friendly, static gamified quiz website for the "Eating for Energy" webinar. This is targeted to children/teens (ages 9-15) who play sports. It will feature 8 activity types across the webinar topics (macronutrients, how do we get energy, blood sugar regulation, 8 energy steps), with points, progress tracking, and fun feedback -- all deployable for free with no backend.
 
 ---
 
@@ -22,7 +22,7 @@ Students land on a welcoming page, choose a topic (or tackle all topics), then w
 **Flow:**
 
 1. Landing Page
-2. Topic Selection (Macronutrients / Blood Sugar / 9 Tips / Full Challenge)
+2. Topic Selection (Quiz / Games)
 3. Mixed Activity Flow (questions from selected topic)
 4. Results and Score Summary
 5. Back to Topic Selection (retry or pick another)
@@ -150,50 +150,50 @@ Once webinar slide images are uploaded:
 
 ### Phase 0 -- Content Extraction
 - [x] User uploads webinar slide images
-- [x] Extract all text, the 9 tips, key facts, and the visual style/branding from the slides
-- [ ] Use extracted content to draft questions for all topic areas
+- [x] Extract all text, the 8 steps, key facts, and the visual style/branding from the slides
+- [x] Use extracted content to draft questions for all topic areas
 
 ### Phase 1 -- Project Scaffold
-- [ ] Initialize a Vite + React project
-- [ ] Set up the file structure as outlined above
-- [ ] Install dependencies (react-router, @dnd-kit/core)
-- [ ] Create Landing, TopicSelect, and Results pages
-- [ ] Build the GameEngine component (sequences questions, tracks score/progress)
+- [x] Initialize a Vite + React project
+- [x] Set up the file structure as outlined above
+- [x] Install dependencies (react-router, @dnd-kit/core)
+- [x] Create Landing, TopicSelect, and Results pages
+- [x] Build the GameEngine component (sequences questions, tracks score/progress)
 
 ### Phase 2 -- Build Activity Components
-- [ ] MultipleChoice component
-- [ ] TrueOrFalse component
-- [ ] DragAndDrop component (with mobile touch support)
-- [ ] FillInTheBlank component
-- [ ] MatchingPairs component
-- [ ] CreateIt component (drag items to build a drink or plate)
-- [ ] ScenarioQuestion component
-- [ ] OrderIt component (arrange process steps in order)
-- [ ] Ensure all components report answers back to GameEngine
+- [x] MultipleChoice component
+- [x] TrueOrFalse component
+- [x] DragAndDrop component (with mobile touch support)
+- [x] MultiSelect component
+- [x] CreateIt component (drag items to build a drink or plate)
+- [x] EmojiSelect component
+- [x] BuildPlate component
+- [x] OrderIt component (arrange process steps in order)
+- [x] Ensure all components report answers back to GameEngine
 
 ### Phase 3 -- Gamification Layer
-- [ ] Points system with difficulty weighting
-- [ ] Streak counter with bonus points
-- [ ] Progress bar
-- [ ] Star ratings on results screen
-- [ ] Instant feedback with explanations
-- [ ] CSS animations (confetti, shake, slide transitions)
+- [x] Points system with difficulty weighting
+- [x] Streak counter with bonus points
+- [x] Progress bar
+- [x] Star ratings on results screen
+- [x] Instant feedback with explanations
+- [x] CSS animations (confetti, shake, slide transitions)
 
 ### Phase 4 -- Populate Real Content
-- [ ] Write 8-12 questions per topic area using extracted webinar content
-- [ ] Include a mix of activity types per topic
-- [ ] Source or create food/drink images for CreateIt and other visual activities
+- [x] Write 18 quiz questions + 9 games using extracted webinar content
+- [x] Include a mix of activity types per topic
+- [x] Source or create food/drink images for CreateIt and other visual activities
 
 ### Phase 5 -- Styling and Branding
-- [ ] Apply the webinar's color palette and visual style
-- [ ] Responsive design testing across screen sizes
+- [x] Apply the webinar's color palette and visual style
+- [x] Responsive design testing across screen sizes
 - [ ] Accessibility review (contrast, focus states, screen reader labels)
 
 ### Phase 6 -- Deploy
-- [ ] Build production bundle
-- [ ] Deploy to Netlify or Vercel
-- [ ] Configure a clean URL
-- [ ] Test the live link on phone and desktop
+- [x] Build production bundle
+- [x] Deploy to GitHub Pages via GitHub Actions
+- [x] Configure base URL for subpath hosting
+- [x] Test the live link on phone and desktop
 
 ---
 
