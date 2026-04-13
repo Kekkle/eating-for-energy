@@ -1,0 +1,19 @@
+.streak-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--color-streak);
+  color: var(--color-charcoal);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+
+.streak-fire {
+  font-size: 1.1rem;
+}
+
+.streak-value {
+  white-space: nowrap;
+}

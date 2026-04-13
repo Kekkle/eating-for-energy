@@ -1,0 +1,21 @@
+.es-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.es-question {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.es-grid {
+  grid-template-columns: repeat(4, 72px);
+}
+
+.es-submit {
+  align-self: center;
+  min-width: 200px;
+}

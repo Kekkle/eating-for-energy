@@ -1,0 +1,223 @@
+:root {
+  /* Background */
+  --color-bg-gradient-top: #7C6BC4;
+  --color-bg-gradient-bottom: #8B1A7A;
+  --color-bg-texture: #9178D1;
+  --color-bg-white: #FFFFFF;
+  --color-bg-card: rgba(255, 255, 255, 0.95);
+
+  /* Primary accents */
+  --color-cyan: #00BCD4;
+  --color-yellow: #FFD700;
+  --color-yellow-badge: #FFC107;
+
+  /* Text */
+  --color-charcoal: #333333;
+  --color-text: #444444;
+  --color-text-light: #666666;
+  --color-text-on-dark: #FFFFFF;
+
+  /* Semantic */
+  --color-correct: #2D8E3C;
+  --color-incorrect: #E84C3D;
+  --color-streak: #FFD700;
+  --color-selected: #00BCD4;
+
+  /* Typography */
+  --font-heading: 'Luckiest Guy', cursive;
+  --font-body: 'Quicksand', sans-serif;
+
+  /* Layout tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-round: 50%;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+  --tap-target: 44px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--color-text-on-dark);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-gradient-top) 0%,
+    var(--color-bg-gradient-bottom) 100%
+  );
+  background-attachment: fixed;
+  line-height: 1.5;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle 60px at 15% 20%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 40px at 80% 15%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 50px at 45% 60%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 35px at 70% 75%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 45px at 25% 85%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 30px at 90% 45%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 55px at 10% 55%, var(--color-bg-texture) 0%, transparent 70%),
+    radial-gradient(circle 38px at 60% 30%, var(--color-bg-texture) 0%, transparent 70%);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-on-dark);
+  line-height: 1.2;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  .app-container {
+    padding: 2rem;
+  }
+}
+
+/* --- Buttons --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-target);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background-color: var(--color-cyan);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active {
+  background-color: #00a0b4;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-text-on-dark);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+/* --- Cards --- */
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+}
+
+.card h2, .card h3 {
+  color: var(--color-charcoal);
+}
+
+/* --- Animations --- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.animate-pop {
+  animation: pop 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}

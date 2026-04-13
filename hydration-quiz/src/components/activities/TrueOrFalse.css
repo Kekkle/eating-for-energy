@@ -1,0 +1,55 @@
+.tf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.tf-statement {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 500px;
+}
+
+.tf-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.tf-btn {
+  flex: 1;
+  min-height: 60px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  border: 3px solid #ddd;
+  background: var(--color-bg-white);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.tf-btn:not(:disabled):active {
+  transform: scale(0.96);
+}
+
+.tf-btn-true {
+  color: var(--color-correct);
+}
+
+.tf-btn-false {
+  color: var(--color-incorrect);
+}
+
+.tf-btn-correct {
+  border-color: var(--color-correct);
+  background: #E8F5E9;
+}
+
+.tf-btn-incorrect {
+  border-color: var(--color-incorrect);
+  background: #FFEBEE;
+  animation: shake 0.4s ease-in-out;
+}

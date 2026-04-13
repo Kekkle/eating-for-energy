@@ -1,0 +1,145 @@
+.cd-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cd-question {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.cd-workspace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 520px) {
+  .cd-workspace {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .cd-cup-area {
+    flex: 0 0 180px;
+  }
+
+  .cd-ingredients {
+    flex: 1;
+    max-width: 340px;
+  }
+}
+
+.cd-cup-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cd-cup {
+  position: relative;
+  width: 160px;
+  min-height: 220px;
+  border: 3px solid var(--color-cyan);
+  border-top: none;
+  border-radius: 0 0 24px 24px;
+  background: rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cd-cup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -3px;
+  right: -3px;
+  height: 3px;
+  background: var(--color-cyan);
+  border-radius: 3px 3px 0 0;
+}
+
+.cd-cup-hover {
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.cd-cup-hover::before {
+  background: var(--color-yellow);
+}
+
+.cd-cup-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #B2EBF2, #80DEEA, #4DD0E1);
+  opacity: 0.4;
+  transition: height 0.4s ease;
+  border-radius: 0 0 21px 21px;
+}
+
+.cd-cup-items {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  padding: 0.5rem;
+  min-height: 220px;
+  align-content: end;
+  justify-items: center;
+}
+
+.cd-cup-empty {
+  font-size: 0.8rem;
+  color: #bbb;
+  text-align: center;
+  padding: 2rem 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.cd-cup-emoji-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 188, 212, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.cd-cup-emoji-btn:not(:disabled):active {
+  transform: scale(0.9);
+}
+
+.cd-cup-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.cd-ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cd-ingredients .emoji-tile-grid {
+  grid-template-columns: repeat(4, 72px);
+}
+
+.cd-submit {
+  align-self: center;
+  min-width: 200px;
+}

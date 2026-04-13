@@ -1,0 +1,112 @@
+.fib-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fib-question {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.fib-sentence {
+  font-size: 1.1rem;
+  line-height: 2;
+  text-align: center;
+  padding: 1rem;
+  background: #fafafa;
+  border-radius: var(--radius-md);
+}
+
+.fib-blank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: 0.25rem 0.75rem;
+  margin: 0 0.25rem;
+  border: 2px dashed #ccc;
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #bbb;
+  cursor: default;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+}
+
+.fib-blank-filled {
+  border-style: solid;
+  border-color: var(--color-selected);
+  color: var(--color-charcoal);
+  background: #E0F7FA;
+  cursor: pointer;
+}
+
+.fib-blank-correct {
+  border-color: var(--color-correct);
+  background: #E8F5E9;
+  color: var(--color-correct);
+}
+
+.fib-blank-incorrect {
+  border-color: var(--color-incorrect);
+  background: #FFEBEE;
+  color: var(--color-incorrect);
+  animation: shake 0.4s ease-in-out;
+}
+
+.fib-word-bank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fib-word-bank-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fib-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.fib-word {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-selected);
+  border-radius: var(--radius-lg);
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: var(--tap-target);
+  display: flex;
+  align-items: center;
+}
+
+.fib-word:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.fib-word-used {
+  opacity: 0.3;
+  border-style: dashed;
+  cursor: default;
+}
+
+.fib-submit {
+  align-self: center;
+  min-width: 200px;
+}
