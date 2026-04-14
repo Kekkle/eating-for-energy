@@ -38,6 +38,7 @@
   grid-template-columns: auto auto;
   gap: 0.5rem;
   justify-content: space-between;
+  padding: 0 0.5rem;
 }
 
 .mp-row {

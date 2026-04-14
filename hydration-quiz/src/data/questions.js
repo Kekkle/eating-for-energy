@@ -162,27 +162,26 @@ const games = [
     type: 'drag-sort',
     question: 'Sugar Sorter!',
     instruction:
-      'Sort these drinks by how much sugar they contain.\n(Hint: 5 teaspoons = about 25g)',
+      'Sort these drinks by how much sugar they contain.\n(Hint: 1 teaspoon = 5g of sugar)',
     categories: [
       {
-        name: '5 or fewer teaspoons',
+        name: 'About 5 teaspoons',
         items: [
-          { name: 'Water', emoji: '💧' },
-          { name: 'Apple juice', emoji: '🍎' },
+          { name: 'Apple juice', image: '/hydration-quiz/images/apple-juice.png' },
+          { name: 'Chocolate milk', image: '/hydration-quiz/images/chocolate-milk.png' },
+          { name: 'Orange juice', image: '/hydration-quiz/images/orange-juice.png' },
         ],
       },
       {
-        name: '6 or more teaspoons',
+        name: '6 teaspoons or more',
         items: [
-          { name: 'Coca-Cola', emoji: '🥤' },
-          { name: 'Sprite', emoji: '🍋' },
-          { name: 'Chocolate milk', emoji: '🍫' },
-          { name: 'Orange juice', emoji: '🍊' },
+          { name: 'Soda', image: '/hydration-quiz/images/soda.png' },
+          { name: 'Energy drink', image: '/hydration-quiz/images/energy-drink.png' },
         ],
       },
     ],
     explanation:
-      'Water has 0 teaspoons of sugar. Apple juice has about 4-5 teaspoons. Chocolate milk has 5-6, orange juice has 5-6, Coca-Cola has 8-9, and Sprite has 9-10 teaspoons!',
+      'The sugar content in drinks varies depending on the brand and portion size. A 250ml glass of fruit juice usually contains around 20–25g of sugar. Soft drinks and energy drinks often contain about 25–30g of sugar per 250ml, but larger cans can contain 50g or more.',
     difficulty: 2,
   },
   {
@@ -219,18 +218,17 @@ const games = [
     type: 'create-drink',
     question: 'Flavoured Water Builder!',
     instruction:
-      'Build a tasty flavoured water — drag healthy ingredients into the glass. Avoid the sugary options!',
+      'Build a tasty flavoured water — drag your favourite ingredients into the glass!',
     maxIngredients: 4,
     ingredients: [
-      { name: 'Water', emoji: '💧', healthy: true },
-      { name: 'Lemon slices', emoji: '🍋', healthy: true },
-      { name: 'Orange slices', emoji: '🍊', healthy: true },
-      { name: 'Berries', emoji: '🫐', healthy: true },
-      { name: 'Apple slices', emoji: '🍎', healthy: true },
-      { name: 'Mint leaves', emoji: '🌿', healthy: true },
-      { name: 'Ice', emoji: '🧊', healthy: true },
-      { name: 'Sugar', emoji: '🍬', healthy: false },
-      { name: 'Fizzy drink', emoji: '🥤', healthy: false },
+      { name: 'Lemon', image: '/hydration-quiz/images/lemon.png', healthy: true },
+      { name: 'Orange', image: '/hydration-quiz/images/orange-slice.png', healthy: true },
+      { name: 'Strawberry', image: '/hydration-quiz/images/strawberry.png', healthy: true },
+      { name: 'Kiwi', image: '/hydration-quiz/images/kiwi.png', healthy: true },
+      { name: 'Cucumber', image: '/hydration-quiz/images/cucumber.png', healthy: true },
+      { name: 'Mint', image: '/hydration-quiz/images/mint.png', healthy: true },
+      { name: 'Ice', image: '/hydration-quiz/images/ice.png', healthy: true },
+      { name: 'Pomegranate', image: '/hydration-quiz/images/pomegranate.png', healthy: true },
     ],
     explanation:
       'Adding slices of fruit like orange, apple, or berries to your water adds extra flavour without processed sugar! A great way to stay hydrated.',
@@ -270,30 +268,33 @@ const games = [
     instruction:
       'Select the 3 colours that indicate you\'re well hydrated (the "healthy pee" colours).',
     options: [
-      { name: 'Very pale', dropletColor: '#F5F0C8' },
-      { name: 'Light straw', dropletColor: '#EDE4A0' },
-      { name: 'Pale yellow', dropletColor: '#E5D370' },
-      { name: 'Medium yellow', dropletColor: '#D4C020' },
-      { name: 'Dark gold', dropletColor: '#C49A00' },
-      { name: 'Amber', dropletColor: '#A06800' },
+      { name: '1 - Very pale', dropletColor: '#F5F5DC' },
+      { name: '2 - Light straw', dropletColor: '#F0E68C' },
+      { name: '3 - Pale yellow', dropletColor: '#E8D44D' },
+      { name: '4 - Yellow', dropletColor: '#D4B828' },
+      { name: '5 - Dark yellow', dropletColor: '#C8A000' },
+      { name: '6 - Orange', dropletColor: '#D48B00' },
+      { name: '7 - Dark orange', dropletColor: '#B86800' },
+      { name: '8 - Brown', dropletColor: '#8B5A00' },
     ],
     answers: [0, 1, 2],
     explanation:
-      'Urine colours 1-3 (the lightest shades) indicate "you\'re hydrated!" Colours 4-8 (darker shades) mean you need to drink more water.',
+      'The lightest shades indicate you\'re hydrated, while darker shades mean you need to drink more water!',
     difficulty: 1,
   },
   {
-    type: 'matching-pairs',
+    type: 'water-fill',
     question: 'Water Content in Our Bodies!',
     instruction:
-      'Match each to its approximate water content percentage. Tap one on the left, then its match on the right.',
-    pairs: [
-      { left: 'Baby', leftEmoji: '👶', right: '78%' },
-      { left: 'Adult man', leftEmoji: '🧑', right: '60%' },
-      { left: 'Adult woman', leftEmoji: '👩', right: '55%' },
-      { left: 'Brain', leftEmoji: '🧠', right: '73%' },
-      { left: 'Heart', leftEmoji: '❤️', right: '73%' },
+      'Tap on each figure to set how much of their body is water.',
+    items: [
+      { name: 'Baby', image: '/hydration-quiz/images/baby.png', answer: 80 },
+      { name: 'Adult man', image: '/hydration-quiz/images/man.png', answer: 60 },
+      { name: 'Adult woman', image: '/hydration-quiz/images/woman.png', answer: 55 },
+      { name: 'Brain', image: '/hydration-quiz/images/brain.png', answer: 75 },
+      { name: 'Heart', image: '/hydration-quiz/images/heart.png', answer: 75 },
     ],
+    tolerance: 5,
     explanation:
       'Our bodies are mostly water! Babies are about 78% water, adult men about 60%, adult women about 55%, and both the brain and heart are about 73% water.',
     difficulty: 2,

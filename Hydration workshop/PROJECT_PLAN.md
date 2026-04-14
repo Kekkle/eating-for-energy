@@ -74,12 +74,14 @@ All content is derived from the Hydration webinar presentation and student summa
 ### Topic 4: Sugar in Drinks
 - Many fluids are hydrating, but some have more sugar than others
 - Sugar content of popular drinks:
-  - Minute Maid Orange (240mL cup): 24g
-  - Apple juice generic (250mL cup): 22g
-  - Minute Maid Lemonade (240mL bottle): 27g
-  - Coca-Cola (330mL can): 35g
-  - Fanta (330mL can): 28.1g
-  - Sprite (330mL can): 38g
+  - Orange juice generic (250mL cup): 21-26g / 6-8 teaspoons
+  - Apple juice generic (250mL cup): 22g-28g / 6-8 teaspoons
+  - Soda drinks (330mL can): 28-35g / 9-11 teaspoons
+  - Energy drinks (250mL cup): 20-80g / 13-21 teaspoons
+  - Chocolate milk (250ml): 14-25g  6-8 teaspoons
+  
+The sugar content in drinks varies depending on the brand and portion size. A 250ml glass of fruit juice usually contains around 20–25g of sugar. Soft drinks and energy drinks often contain about 25–30g of sugar per 250ml, but larger cans can contain 50g or more.
+  
 - **1 teaspoon = 5g sugar** (or 1 cube = 4g)
 - NHS daily sugar limits:
   - Ages 7-10: no more than **24g** per day

@@ -15,6 +15,7 @@ import EmojiSelect from './activities/EmojiSelect'
 import MatchingPairs from './activities/MatchingPairs'
 import CreateDrink from './activities/CreateDrink'
 import OrderIt from './activities/OrderIt'
+import WaterFill from './activities/WaterFill'
 import './GameEngine.css'
 
 const ACTIVITY_COMPONENTS = {
@@ -27,6 +28,7 @@ const ACTIVITY_COMPONENTS = {
   'matching-pairs': MatchingPairs,
   'create-drink': CreateDrink,
   'order-it': OrderIt,
+  'water-fill': WaterFill,
 }
 
 export default function GameEngine() {

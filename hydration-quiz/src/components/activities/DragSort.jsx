@@ -12,20 +12,35 @@ import {
 import './DragSort.css'
 import './emoji-tile.css'
 
-function DraggableTile({ id, emoji, filter, disabled }) {
+function TileContent({ item }) {
+  if (item.image) {
+    return <img className="emoji-tile-img" src={item.image} alt={item.name} />
+  }
+  return (
+    <span className="emoji-tile-icon" style={item.filter ? { filter: item.filter } : undefined}>
+      {item.emoji}
+    </span>
+  )
+}
+
+function DraggableTile({ id, item, disabled }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id,
     disabled,
   })
 
+  const tileClass = item.image
+    ? `ds-img-tile ${isDragging ? 'ds-img-tile-dragging' : ''}`
+    : `emoji-tile ${isDragging ? 'emoji-tile-dragging' : ''}`
+
   return (
     <div
       ref={setNodeRef}
-      className={`emoji-tile ${isDragging ? 'emoji-tile-dragging' : ''}`}
+      className={tileClass}
       {...listeners}
       {...attributes}
     >
-      <span className="emoji-tile-icon" style={filter ? { filter } : undefined}>{emoji}</span>
+      <TileContent item={item} />
     </div>
   )
 }
@@ -150,6 +165,7 @@ export default function DragSort({ question, onAnswer }) {
   }
 
   const activeItem = activeId ? itemMap[activeId] : null
+  const hasImages = allItems.some((i) => i.image)
   const hasWrongAnswers =
     submitted && results && !Object.values(results).every(Boolean)
 
@@ -165,15 +181,14 @@ export default function DragSort({ question, onAnswer }) {
         <p className="game-instruction">{question.instruction}</p>
 
         {pool.length > 0 && (
-          <div className="emoji-tile-grid">
+          <div className={hasImages ? 'ds-img-grid' : 'emoji-tile-grid'}>
             {pool.map((name) => {
               const item = itemMap[name]
               return (
                 <DraggableTile
                   key={name}
                   id={name}
-                  emoji={item.emoji}
-                  filter={item.filter}
+                  item={item}
                   disabled={submitted}
                 />
               )
@@ -196,18 +211,19 @@ export default function DragSort({ question, onAnswer }) {
                 const item = itemMap[name]
                 const resultClass = results
                   ? results[name]
-                    ? 'emoji-tile-correct'
-                    : 'emoji-tile-incorrect'
+                    ? item.image ? 'ds-img-tile-correct' : 'emoji-tile-correct'
+                    : item.image ? 'ds-img-tile-incorrect' : 'emoji-tile-incorrect'
                   : ''
+                const baseClass = item.image ? 'ds-img-tile ds-img-tile-in-zone' : 'emoji-tile'
                 return (
                   <button
                     key={name}
-                    className={`emoji-tile ${resultClass}`}
+                    className={`${baseClass} ${resultClass}`}
                     onClick={() => moveBackToPool(name)}
                     disabled={submitted}
                     style={{ cursor: submitted ? 'default' : 'pointer' }}
                   >
-                    <span className="emoji-tile-icon" style={item.filter ? { filter: item.filter } : undefined}>{item.emoji}</span>
+                    <TileContent item={item} />
                   </button>
                 )
               })}
@@ -236,8 +252,8 @@ export default function DragSort({ question, onAnswer }) {
 
       <DragOverlay dropAnimation={null}>
         {activeItem && (
-          <div className="emoji-tile-overlay">
-            <span className="emoji-tile-icon" style={activeItem.filter ? { filter: activeItem.filter } : undefined}>{activeItem.emoji}</span>
+          <div className={activeItem.image ? 'ds-img-tile ds-img-tile-overlay' : 'emoji-tile-overlay'}>
+            <TileContent item={activeItem} />
           </div>
         )}
       </DragOverlay>

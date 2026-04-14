@@ -26,7 +26,7 @@
   }
 
   .cd-cup-area {
-    flex: 0 0 180px;
+    flex: 0 0 200px;
   }
 
   .cd-ingredients {
@@ -44,45 +44,26 @@
 
 .cd-cup {
   position: relative;
-  width: 160px;
-  min-height: 220px;
-  border: 3px solid var(--color-cyan);
-  border-top: none;
-  border-radius: 0 0 24px 24px;
-  background: rgba(255, 255, 255, 0.95);
-  overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 180px;
+  min-height: 280px;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  transition: filter 0.3s;
 }
 
-.cd-cup::before {
-  content: '';
+.cd-cup-img {
   position: absolute;
-  top: 0;
-  left: -3px;
-  right: -3px;
-  height: 3px;
-  background: var(--color-cyan);
-  border-radius: 3px 3px 0 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .cd-cup-hover {
-  border-color: var(--color-yellow);
-  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
-}
-
-.cd-cup-hover::before {
-  background: var(--color-yellow);
-}
-
-.cd-cup-liquid {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #B2EBF2, #80DEEA, #4DD0E1);
-  opacity: 0.4;
-  transition: height 0.4s ease;
-  border-radius: 0 0 21px 21px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
 .cd-cup-items {
@@ -90,16 +71,16 @@
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.4rem;
-  padding: 0.5rem;
-  min-height: 220px;
+  gap: 0.75rem;
+  padding: 1.5rem 1.2rem 2.5rem;
+  min-height: 280px;
   align-content: end;
   justify-items: center;
 }
 
 .cd-cup-empty {
   font-size: 0.8rem;
-  color: #bbb;
+  color: #999;
   text-align: center;
   padding: 2rem 0.5rem;
   grid-column: 1 / -1;
@@ -117,6 +98,14 @@
   justify-content: center;
   transition: all 0.15s;
   cursor: pointer;
+  padding: 4px;
+  overflow: hidden;
+}
+
+.cd-cup-emoji-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .cd-cup-emoji-btn:not(:disabled):active {
@@ -148,6 +137,29 @@
 
 .cd-ingredients .emoji-tile-grid {
   grid-template-columns: repeat(4, 72px);
+  gap: 1.25rem;
+}
+
+.cd-img-tile {
+  background: transparent;
+  border: none;
+}
+
+.cd-img-tile-overlay {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.cd-cup-img-btn {
+  background: transparent;
+  border: none;
+}
+
+.cd-cup-img-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .cd-submit {

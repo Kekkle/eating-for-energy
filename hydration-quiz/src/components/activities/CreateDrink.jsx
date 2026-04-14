@@ -12,21 +12,29 @@ import {
 import './CreateDrink.css'
 import './emoji-tile.css'
 
-function DraggableIngredient({ id, emoji, disabled, onTap }) {
+function IngredientContent({ item }) {
+  if (item.image) {
+    return <img className="emoji-tile-img" src={item.image} alt={item.name} />
+  }
+  return <span className="emoji-tile-icon">{item.emoji}</span>
+}
+
+function DraggableIngredient({ id, item, disabled, onTap }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id,
     disabled,
   })
+  const hasImage = !!item.image
 
   return (
     <div
       ref={setNodeRef}
-      className={`emoji-tile ${isDragging ? 'emoji-tile-dragging' : ''} ${disabled ? 'emoji-tile-used' : ''}`}
+      className={`emoji-tile ${hasImage ? 'cd-img-tile' : ''} ${isDragging ? 'emoji-tile-dragging' : ''} ${disabled ? 'emoji-tile-used' : ''}`}
       onClick={() => !disabled && onTap(id)}
       {...listeners}
       {...attributes}
     >
-      <span className="emoji-tile-icon">{emoji}</span>
+      <IngredientContent item={item} />
     </div>
   )
 }
@@ -39,6 +47,11 @@ function DroppableCup({ children, isOver }) {
       ref={setNodeRef}
       className={`cd-cup ${isOver ? 'cd-cup-hover' : ''}`}
     >
+      <img
+        className="cd-cup-img"
+        src="/hydration-quiz/images/water-glass.png"
+        alt="Water glass"
+      />
       {children}
     </div>
   )
@@ -136,10 +149,6 @@ export default function CreateDrink({ question, onAnswer }) {
         <div className="cd-workspace">
           <div className="cd-cup-area">
             <DroppableCup isOver={activeId !== null}>
-              <div
-                className="cd-cup-liquid"
-                style={{ height: `${Math.min((cup.length / maxItems) * 100, 100)}%` }}
-              />
               <div className="cd-cup-items">
                 {cup.length === 0 && (
                   <p className="cd-cup-empty">Drop here!</p>
@@ -155,11 +164,11 @@ export default function CreateDrink({ question, onAnswer }) {
                   return (
                     <button
                       key={name}
-                      className={`cd-cup-emoji-btn ${resultClass}`}
+                      className={`cd-cup-emoji-btn ${ing.image ? 'cd-cup-img-btn' : ''} ${resultClass}`}
                       onClick={() => removeIngredient(name)}
                       disabled={submitted}
                     >
-                      {ing.emoji}
+                      <IngredientContent item={ing} />
                     </button>
                   )
                 })}
@@ -176,7 +185,7 @@ export default function CreateDrink({ question, onAnswer }) {
                   <DraggableIngredient
                     key={ing.name}
                     id={ing.name}
-                    emoji={ing.emoji}
+                    item={ing}
                     disabled={submitted || inCup || cup.length >= maxItems}
                     onTap={addIngredient}
                   />
@@ -207,8 +216,8 @@ export default function CreateDrink({ question, onAnswer }) {
 
       <DragOverlay dropAnimation={null}>
         {activeIngredient && (
-          <div className="emoji-tile-overlay">
-            <span className="emoji-tile-icon">{activeIngredient.emoji}</span>
+          <div className={`emoji-tile-overlay ${activeIngredient.image ? 'cd-img-tile-overlay' : ''}`}>
+            <IngredientContent item={activeIngredient} />
           </div>
         )}
       </DragOverlay>

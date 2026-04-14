@@ -56,6 +56,14 @@ export default function EmojiSelect({ question, onAnswer }) {
   const handleSubmit = () => {
     if (selected.size === 0 || submitted) return
 
+    if (question.selectCount && selected.size < correctSet.size) {
+      const remaining = correctSet.size - selected.size
+      setTooFewPrompt(
+        `There's ${remaining} more item${remaining > 1 ? 's' : ''} left to find!`
+      )
+      return
+    }
+
     const isCorrect =
       selected.size === correctSet.size &&
       [...selected].every((i) => correctSet.has(i))
@@ -88,6 +96,7 @@ export default function EmojiSelect({ question, onAnswer }) {
 
   const hasWrongAnswers =
     submitted && results && Object.values(results).some((v) => !v)
+  const [tooFewPrompt, setTooFewPrompt] = useState(null)
 
   return (
     <div className="es-container card">
@@ -98,6 +107,20 @@ export default function EmojiSelect({ question, onAnswer }) {
         <p className="es-counter">
           {selected.size} / {question.selectCount} selected
         </p>
+      )}
+
+      {tooFewPrompt && (
+        <div className="es-too-few-overlay">
+          <div className="es-too-few-card">
+            <p className="es-too-few-text">{tooFewPrompt}</p>
+            <button
+              className="btn btn-primary"
+              onClick={() => setTooFewPrompt(null)}
+            >
+              OK
+            </button>
+          </div>
+        </div>
       )}
 
       <div className={isDropletMode ? 'es-droplet-row' : 'emoji-tile-grid es-grid'}>

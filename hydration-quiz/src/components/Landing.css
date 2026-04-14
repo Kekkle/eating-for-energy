@@ -67,7 +67,10 @@
   padding: 1rem 3rem;
   border-radius: var(--radius-lg);
   font-family: var(--font-heading);
+  font-weight: 400;
   letter-spacing: 0.02em;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 .landing-emoji-mascot {
@@ -81,10 +84,35 @@
   50% { transform: translateY(-12px); }
 }
 
+.landing-logo-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.landing-logo-oval {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.landing-logo-oval img {
+  width: 64px;
+  height: auto;
+  object-fit: contain;
+}
+
 .landing-footer {
   position: relative;
   z-index: 1;
-  margin-top: auto;
 }
 
 .landing-footer p {

@@ -36,6 +36,12 @@ export default function Landing() {
         <div className="landing-emoji-mascot">💧</div>
       </div>
 
+      <div className="landing-logo-wrap">
+        <div className="landing-logo-oval">
+          <img src="/hydration-quiz/images/health-embrace-logo.png" alt="Health Embrace" />
+        </div>
+      </div>
+
       <div className="landing-footer">
         <p>
           Based on the <strong>Hydration</strong> workshop
