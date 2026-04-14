@@ -6,7 +6,7 @@
 
 .cd-question {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.3;
   text-align: center;
 }
@@ -121,6 +121,17 @@
 
 .cd-cup-emoji-btn:not(:disabled):active {
   transform: scale(0.9);
+}
+
+.cd-cup-emoji-correct {
+  border-color: var(--color-correct);
+  background: rgba(45, 142, 60, 0.15);
+}
+
+.cd-cup-emoji-incorrect {
+  border-color: var(--color-incorrect);
+  background: rgba(232, 76, 61, 0.15);
+  animation: shake 0.4s ease-in-out;
 }
 
 .cd-cup-count {

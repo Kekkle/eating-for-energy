@@ -163,19 +163,37 @@ export default function OrderIt({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (slots.some((s) => s === null) || submitted) return
-    setSubmitted(true)
 
     const stepResults = slots.map(
       (text, i) => text === correctOrder[i]
     )
     setResults(stepResults)
+    setSubmitted(true)
 
     const allCorrect = stepResults.every(Boolean)
-    onAnswer(allCorrect, question.explanation)
+    if (allCorrect) {
+      onAnswer(true, question.explanation)
+    }
+  }
+
+  const handleTryAgain = () => {
+    const nextSlots = [...slots]
+    const returnToPool = []
+    results.forEach((correct, i) => {
+      if (!correct && nextSlots[i] !== null) {
+        returnToPool.push(nextSlots[i])
+        nextSlots[i] = null
+      }
+    })
+    setBoard({ pool: [...pool, ...returnToPool], slots: nextSlots })
+    setSubmitted(false)
+    setResults(null)
   }
 
   const activeStep = activeId ? stepMap[activeId] : null
   const allPlaced = slots.every((s) => s !== null)
+  const hasWrongAnswers =
+    submitted && results && results.some((r) => !r)
 
   return (
     <DndContext
@@ -239,6 +257,18 @@ export default function OrderIt({ question, onAnswer }) {
           <button className="btn btn-primary oi-submit" onClick={handleSubmit}>
             Check Order
           </button>
+        )}
+
+        {hasWrongAnswers && (
+          <div className="game-inline-feedback">
+            <span className="game-inline-feedback-icon">💡</span>
+            <p className="game-inline-feedback-text">
+              Not quite! The red steps are in the wrong position. Try again!
+            </p>
+            <button className="btn btn-primary oi-submit" onClick={handleTryAgain}>
+              Try Again
+            </button>
+          </div>
         )}
       </div>
 

@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import './MultiSelect.css'
+import './emoji-tile.css'
 
 export default function MultiSelect({ question, onAnswer }) {
   const [selected, setSelected] = useState(new Set())
   const [submitted, setSubmitted] = useState(false)
+  const [results, setResults] = useState(null)
+
+  const correctSet = new Set(question.answers)
 
   const toggleOption = (index) => {
     if (submitted) return
@@ -17,17 +21,35 @@ export default function MultiSelect({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (selected.size === 0 || submitted) return
-    setSubmitted(true)
 
-    const correctSet = new Set(question.answers)
     const isCorrect =
       selected.size === correctSet.size &&
       [...selected].every((i) => correctSet.has(i))
 
-    onAnswer(isCorrect, question.explanation)
+    const itemResults = {}
+    selected.forEach((i) => {
+      itemResults[i] = correctSet.has(i)
+    })
+    setResults(itemResults)
+    setSubmitted(true)
+
+    if (isCorrect) {
+      onAnswer(true, question.explanation)
+    }
   }
 
-  const correctSet = new Set(question.answers)
+  const handleTryAgain = () => {
+    const keptSelections = new Set()
+    selected.forEach((i) => {
+      if (correctSet.has(i)) keptSelections.add(i)
+    })
+    setSelected(keptSelections)
+    setSubmitted(false)
+    setResults(null)
+  }
+
+  const hasWrongAnswers =
+    submitted && results && Object.values(results).some((v) => !v)
 
   return (
     <div className="ms-container card">
@@ -39,21 +61,20 @@ export default function MultiSelect({ question, onAnswer }) {
       <div className="ms-options">
         {question.options.map((option, index) => {
           const isSelected = selected.has(index)
-          const isCorrectOption = correctSet.has(index)
           let statusClass = ''
-          if (submitted) {
-            if (isCorrectOption) statusClass = 'ms-option-correct'
-            else if (isSelected && !isCorrectOption) statusClass = 'ms-option-incorrect'
+          if (submitted && results) {
+            if (isSelected && results[index] === true) statusClass = 'ms-option-correct'
+            else if (isSelected && results[index] === false) statusClass = 'ms-option-incorrect'
           }
 
           return (
             <button
               key={index}
-              className={`ms-option ${isSelected ? 'ms-option-selected' : ''} ${statusClass}`}
+              className={`ms-option ${isSelected && !submitted ? 'ms-option-selected' : ''} ${statusClass}`}
               onClick={() => toggleOption(index)}
               disabled={submitted}
             >
-              <span className={`ms-checkbox ${isSelected ? 'ms-checkbox-checked' : ''} ${submitted && isCorrectOption ? 'ms-checkbox-correct' : ''}`}>
+              <span className={`ms-checkbox ${isSelected ? 'ms-checkbox-checked' : ''} ${submitted && results && isSelected && results[index] === true ? 'ms-checkbox-correct' : ''} ${submitted && results && isSelected && results[index] === false ? 'ms-checkbox-incorrect' : ''}`}>
                 {isSelected ? '✓' : ''}
               </span>
               <span className="ms-option-text">{option}</span>
@@ -66,6 +87,18 @@ export default function MultiSelect({ question, onAnswer }) {
         <button className="btn btn-primary ms-submit" onClick={handleSubmit}>
           Submit Answer
         </button>
+      )}
+
+      {hasWrongAnswers && (
+        <div className="game-inline-feedback">
+          <span className="game-inline-feedback-icon">💡</span>
+          <p className="game-inline-feedback-text">
+            Not quite! The red selections aren't right. Try again!
+          </p>
+          <button className="btn btn-primary ms-submit" onClick={handleTryAgain}>
+            Try Again
+          </button>
+        </div>
       )}
     </div>
   )

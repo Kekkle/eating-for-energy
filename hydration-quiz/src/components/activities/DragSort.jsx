@@ -115,7 +115,6 @@ export default function DragSort({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (pool.length > 0 || submitted) return
-    setSubmitted(true)
 
     const itemResults = {}
     let allCorrect = true
@@ -127,10 +126,32 @@ export default function DragSort({ question, onAnswer }) {
       })
     })
     setResults(itemResults)
-    onAnswer(allCorrect, question.explanation)
+    setSubmitted(true)
+
+    if (allCorrect) {
+      onAnswer(true, question.explanation)
+    }
+  }
+
+  const handleTryAgain = () => {
+    const incorrectItems = []
+    const newBins = {}
+    Object.entries(bins).forEach(([catName, items]) => {
+      newBins[catName] = items.filter((name) => {
+        if (correctMap[name] === catName) return true
+        incorrectItems.push(name)
+        return false
+      })
+    })
+    setBins(newBins)
+    setPool(incorrectItems)
+    setSubmitted(false)
+    setResults(null)
   }
 
   const activeItem = activeId ? itemMap[activeId] : null
+  const hasWrongAnswers =
+    submitted && results && !Object.values(results).every(Boolean)
 
   return (
     <DndContext
@@ -198,6 +219,18 @@ export default function DragSort({ question, onAnswer }) {
           <button className="btn btn-primary ds-submit" onClick={handleSubmit}>
             Submit Answer
           </button>
+        )}
+
+        {hasWrongAnswers && (
+          <div className="game-inline-feedback">
+            <span className="game-inline-feedback-icon">💡</span>
+            <p className="game-inline-feedback-text">
+              Not quite! The red items are in the wrong category. Try again!
+            </p>
+            <button className="btn btn-primary ds-submit" onClick={handleTryAgain}>
+              Try Again
+            </button>
+          </div>
         )}
       </div>
 

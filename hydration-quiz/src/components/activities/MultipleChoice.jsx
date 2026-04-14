@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './MultipleChoice.css'
+import './emoji-tile.css'
 
 function shuffleOptions(options, correctIndex) {
   const indexed = options.map((opt, i) => ({ opt, isCorrect: i === correctIndex }))
@@ -18,6 +19,7 @@ export default function MultipleChoice({ question, onAnswer }) {
   )
   const [selected, setSelected] = useState(null)
   const [submitted, setSubmitted] = useState(false)
+  const [wasWrong, setWasWrong] = useState(false)
 
   const handleSelect = (index) => {
     if (submitted) return
@@ -26,9 +28,20 @@ export default function MultipleChoice({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (selected === null || submitted) return
-    setSubmitted(true)
     const isCorrect = selected === newCorrect
-    onAnswer(isCorrect, question.explanation)
+    setSubmitted(true)
+
+    if (isCorrect) {
+      onAnswer(true, question.explanation)
+    } else {
+      setWasWrong(true)
+    }
+  }
+
+  const handleTryAgain = () => {
+    setSelected(null)
+    setSubmitted(false)
+    setWasWrong(false)
   }
 
   return (
@@ -39,8 +52,8 @@ export default function MultipleChoice({ question, onAnswer }) {
         {shuffled.map((option, index) => (
           <button
             key={index}
-            className={`mc-option ${selected === index ? 'mc-option-selected' : ''} ${
-              submitted && index === newCorrect ? 'mc-option-correct' : ''
+            className={`mc-option ${selected === index && !submitted ? 'mc-option-selected' : ''} ${
+              submitted && selected === index && index === newCorrect ? 'mc-option-correct' : ''
             } ${
               submitted && selected === index && index !== newCorrect
                 ? 'mc-option-incorrect'
@@ -61,6 +74,18 @@ export default function MultipleChoice({ question, onAnswer }) {
         <button className="btn btn-primary mc-submit" onClick={handleSubmit}>
           Submit Answer
         </button>
+      )}
+
+      {wasWrong && submitted && (
+        <div className="game-inline-feedback">
+          <span className="game-inline-feedback-icon">💡</span>
+          <p className="game-inline-feedback-text">
+            Not quite! Try another answer.
+          </p>
+          <button className="btn btn-primary mc-submit" onClick={handleTryAgain}>
+            Try Again
+          </button>
+        </div>
       )}
     </div>
   )

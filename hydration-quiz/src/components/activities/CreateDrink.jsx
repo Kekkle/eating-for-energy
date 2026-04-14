@@ -47,6 +47,7 @@ function DroppableCup({ children, isOver }) {
 export default function CreateDrink({ question, onAnswer }) {
   const [cup, setCup] = useState([])
   const [submitted, setSubmitted] = useState(false)
+  const [results, setResults] = useState(null)
   const [activeId, setActiveId] = useState(null)
 
   const maxItems = question.maxIngredients || 4
@@ -88,19 +89,39 @@ export default function CreateDrink({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (cup.length === 0 || submitted) return
+
+    const itemResults = {}
+    let allCorrect = true
+    cup.forEach((name) => {
+      const ing = ingredientMap[name]
+      const correct = ing.healthy === true
+      itemResults[name] = correct
+      if (!correct) allCorrect = false
+    })
+
+    if (allCorrect && cup.every((name) => ingredientMap[name].healthy)) {
+      const hasHealthy = cup.some((name) => ingredientMap[name].healthy)
+      if (!hasHealthy) allCorrect = false
+    }
+
+    setResults(itemResults)
     setSubmitted(true)
-    const hasHealthy = cup.some((name) => {
-      const ing = ingredientMap[name]
-      return ing.healthy === true
-    })
-    const hasUnhealthy = cup.some((name) => {
-      const ing = ingredientMap[name]
-      return ing.healthy === false
-    })
-    onAnswer(hasHealthy && !hasUnhealthy, question.explanation)
+
+    if (allCorrect) {
+      onAnswer(true, question.explanation)
+    }
+  }
+
+  const handleTryAgain = () => {
+    const keptItems = cup.filter((name) => ingredientMap[name].healthy)
+    setCup(keptItems)
+    setSubmitted(false)
+    setResults(null)
   }
 
   const activeIngredient = activeId ? ingredientMap[activeId] : null
+  const hasWrongAnswers =
+    submitted && results && Object.values(results).some((v) => !v)
 
   return (
     <DndContext
@@ -125,10 +146,16 @@ export default function CreateDrink({ question, onAnswer }) {
                 )}
                 {cup.map((name) => {
                   const ing = ingredientMap[name]
+                  let resultClass = ''
+                  if (results) {
+                    resultClass = results[name]
+                      ? 'cd-cup-emoji-correct'
+                      : 'cd-cup-emoji-incorrect'
+                  }
                   return (
                     <button
                       key={name}
-                      className="cd-cup-emoji-btn"
+                      className={`cd-cup-emoji-btn ${resultClass}`}
                       onClick={() => removeIngredient(name)}
                       disabled={submitted}
                     >
@@ -163,6 +190,18 @@ export default function CreateDrink({ question, onAnswer }) {
           <button className="btn btn-primary cd-submit" onClick={handleSubmit}>
             Create My Drink! 💧
           </button>
+        )}
+
+        {hasWrongAnswers && (
+          <div className="game-inline-feedback">
+            <span className="game-inline-feedback-icon">💡</span>
+            <p className="game-inline-feedback-text">
+              Not quite! The red ingredients don't belong. Try again!
+            </p>
+            <button className="btn btn-primary cd-submit" onClick={handleTryAgain}>
+              Try Again
+            </button>
+          </div>
         )}
       </div>
 

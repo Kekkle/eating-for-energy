@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './FillInTheBlank.css'
+import './emoji-tile.css'
 
 function shuffleArray(arr) {
   const a = [...arr]
@@ -15,6 +16,7 @@ export default function FillInTheBlank({ question, onAnswer }) {
   const [shuffledWordBank] = useState(() => shuffleArray(question.wordBank))
   const [filled, setFilled] = useState(Array(blanks.length).fill(null))
   const [submitted, setSubmitted] = useState(false)
+  const [results, setResults] = useState(null)
 
   const usedWords = filled.filter(Boolean)
 
@@ -40,15 +42,32 @@ export default function FillInTheBlank({ question, onAnswer }) {
 
   const handleSubmit = () => {
     if (filled.some((w) => w === null) || submitted) return
+
+    const blankResults = blanks.map(
+      (answer, i) => answer.toLowerCase() === filled[i]?.toLowerCase()
+    )
+    setResults(blankResults)
     setSubmitted(true)
 
-    const isCorrect = blanks.every((answer, i) =>
-      answer.toLowerCase() === filled[i]?.toLowerCase()
-    )
-    onAnswer(isCorrect, question.explanation)
+    const allCorrect = blankResults.every(Boolean)
+    if (allCorrect) {
+      onAnswer(true, question.explanation)
+    }
+  }
+
+  const handleTryAgain = () => {
+    const nextFilled = [...filled]
+    results.forEach((correct, i) => {
+      if (!correct) nextFilled[i] = null
+    })
+    setFilled(nextFilled)
+    setSubmitted(false)
+    setResults(null)
   }
 
   const sentenceParts = question.sentence.split('_____')
+  const hasWrongAnswers =
+    submitted && results && results.some((r) => !r)
 
   return (
     <div className="fib-container card">
@@ -61,13 +80,9 @@ export default function FillInTheBlank({ question, onAnswer }) {
             {i < blanks.length && (
               <button
                 className={`fib-blank ${filled[i] ? 'fib-blank-filled' : ''} ${
-                  submitted && filled[i]?.toLowerCase() === blanks[i].toLowerCase()
-                    ? 'fib-blank-correct'
-                    : ''
+                  results && results[i] === true ? 'fib-blank-correct' : ''
                 } ${
-                  submitted && filled[i] && filled[i]?.toLowerCase() !== blanks[i].toLowerCase()
-                    ? 'fib-blank-incorrect'
-                    : ''
+                  results && results[i] === false ? 'fib-blank-incorrect' : ''
                 }`}
                 onClick={() => clearBlank(i)}
                 disabled={submitted || !filled[i]}
@@ -102,6 +117,18 @@ export default function FillInTheBlank({ question, onAnswer }) {
         <button className="btn btn-primary fib-submit" onClick={handleSubmit}>
           Submit Answer
         </button>
+      )}
+
+      {hasWrongAnswers && (
+        <div className="game-inline-feedback">
+          <span className="game-inline-feedback-icon">💡</span>
+          <p className="game-inline-feedback-text">
+            Not quite! The red words aren't right. Try again!
+          </p>
+          <button className="btn btn-primary fib-submit" onClick={handleTryAgain}>
+            Try Again
+          </button>
+        </div>
       )}
     </div>
   )

@@ -84,6 +84,12 @@
   color: white;
 }
 
+.ms-checkbox-incorrect {
+  border-color: var(--color-incorrect);
+  background: var(--color-incorrect);
+  color: white;
+}
+
 .ms-option-text {
   flex: 1;
 }
