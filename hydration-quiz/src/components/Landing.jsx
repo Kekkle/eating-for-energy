@@ -22,8 +22,13 @@ export default function Landing() {
     setTimeout(() => setPhase('idle'), 2400)
   }, [phase])
 
+  const homeUrl = import.meta.env.BASE_URL.replace(/hydration-quiz\/$/, '')
+
   return (
     <div className="landing animate-in">
+      <a className="landing-back" href={homeUrl}>
+        ← Back to Home
+      </a>
       <div className="landing-decorations">
         <span className="deco deco-1">💧</span>
         <span className="deco deco-2">🥤</span>

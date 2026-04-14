@@ -12,6 +12,12 @@ export default function Landing() {
 
   return (
     <div className="landing animate-in">
+      <button
+        className="landing-back"
+        onClick={() => navigate('/')}
+      >
+        ← Back to Home
+      </button>
       <div className="landing-decorations">
         <span className="deco deco-1">🍎</span>
         <span className="deco deco-2">⚽</span>

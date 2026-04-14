@@ -43,7 +43,10 @@ export default function Home() {
       </section>
 
       <section className="home-quizzes">
-        <article className="home-card home-card--eating">
+        <article
+          className="home-card home-card--eating"
+          onClick={() => navigate('/eating')}
+        >
           <div className="home-card-icon">🍎⚡</div>
           <h3 className="home-card-title">Eating for Energy</h3>
           <p className="home-card-desc">
@@ -55,15 +58,15 @@ export default function Home() {
             <li>Blood sugar</li>
             <li>8 energy steps</li>
           </ul>
-          <button
-            className="home-card-btn home-card-btn--eating"
-            onClick={() => navigate('/eating')}
-          >
+          <span className="home-card-btn home-card-btn--eating">
             Play Now
-          </button>
+          </span>
         </article>
 
-        <article className="home-card home-card--hydration">
+        <a
+          className="home-card home-card--hydration"
+          href={hydrationUrl}
+        >
           <div className="home-card-icon">💧🥤</div>
           <h3 className="home-card-title">Hydration Matters</h3>
           <p className="home-card-desc">
@@ -75,13 +78,10 @@ export default function Home() {
             <li>Sugar in drinks</li>
             <li>Hydrating foods</li>
           </ul>
-          <a
-            className="home-card-btn home-card-btn--hydration"
-            href={hydrationUrl}
-          >
+          <span className="home-card-btn home-card-btn--hydration">
             Play Now
-          </a>
-        </article>
+          </span>
+        </a>
       </section>
 
       <footer className="home-footer">
