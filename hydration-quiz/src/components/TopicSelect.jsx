@@ -5,7 +5,7 @@ const SECTIONS = [
   {
     id: 'quiz',
     title: 'Take the Quiz!',
-    description: 'Test your knowledge on hydration, urine colour, sugar in drinks, and more.',
+    description: 'Test your knowledge on hydration, sugar in drinks, and more.',
     icon: '🧠',
     color: 'var(--color-cyan)',
     enabled: true,
