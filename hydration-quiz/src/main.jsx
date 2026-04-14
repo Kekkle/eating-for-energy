@@ -7,7 +7,7 @@ import './styles/global.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/hydration-quiz">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <GameProvider>
         <App />
       </GameProvider>

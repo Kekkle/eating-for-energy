@@ -49,7 +49,7 @@ function DroppableCup({ children, isOver }) {
     >
       <img
         className="cd-cup-img"
-        src="/hydration-quiz/images/water-glass.png"
+        src={`${import.meta.env.BASE_URL}images/water-glass.png`}
         alt="Water glass"
       />
       {children}

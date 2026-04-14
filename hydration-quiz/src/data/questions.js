@@ -1,3 +1,5 @@
+const BASE = import.meta.env.BASE_URL
+
 const quizQuestions = [
   {
     type: 'multiple-choice',
@@ -167,16 +169,16 @@ const games = [
       {
         name: 'About 5 teaspoons',
         items: [
-          { name: 'Apple juice', image: '/hydration-quiz/images/apple-juice.png' },
-          { name: 'Chocolate milk', image: '/hydration-quiz/images/chocolate-milk.png' },
-          { name: 'Orange juice', image: '/hydration-quiz/images/orange-juice.png' },
+          { name: 'Apple juice', image: `${BASE}images/apple-juice.png` },
+          { name: 'Chocolate milk', image: `${BASE}images/chocolate-milk.png` },
+          { name: 'Orange juice', image: `${BASE}images/orange-juice.png` },
         ],
       },
       {
         name: '6 teaspoons or more',
         items: [
-          { name: 'Soda', image: '/hydration-quiz/images/soda.png' },
-          { name: 'Energy drink', image: '/hydration-quiz/images/energy-drink.png' },
+          { name: 'Soda', image: `${BASE}images/soda.png` },
+          { name: 'Energy drink', image: `${BASE}images/energy-drink.png` },
         ],
       },
     ],
@@ -221,14 +223,14 @@ const games = [
       'Build a tasty flavoured water — drag your favourite ingredients into the glass!',
     maxIngredients: 4,
     ingredients: [
-      { name: 'Lemon', image: '/hydration-quiz/images/lemon.png', healthy: true },
-      { name: 'Orange', image: '/hydration-quiz/images/orange-slice.png', healthy: true },
-      { name: 'Strawberry', image: '/hydration-quiz/images/strawberry.png', healthy: true },
-      { name: 'Kiwi', image: '/hydration-quiz/images/kiwi.png', healthy: true },
-      { name: 'Cucumber', image: '/hydration-quiz/images/cucumber.png', healthy: true },
-      { name: 'Mint', image: '/hydration-quiz/images/mint.png', healthy: true },
-      { name: 'Ice', image: '/hydration-quiz/images/ice.png', healthy: true },
-      { name: 'Pomegranate', image: '/hydration-quiz/images/pomegranate.png', healthy: true },
+      { name: 'Lemon', image: `${BASE}images/lemon.png`, healthy: true },
+      { name: 'Orange', image: `${BASE}images/orange-slice.png`, healthy: true },
+      { name: 'Strawberry', image: `${BASE}images/strawberry.png`, healthy: true },
+      { name: 'Kiwi', image: `${BASE}images/kiwi.png`, healthy: true },
+      { name: 'Cucumber', image: `${BASE}images/cucumber.png`, healthy: true },
+      { name: 'Mint', image: `${BASE}images/mint.png`, healthy: true },
+      { name: 'Ice', image: `${BASE}images/ice.png`, healthy: true },
+      { name: 'Pomegranate', image: `${BASE}images/pomegranate.png`, healthy: true },
     ],
     explanation:
       'Adding slices of fruit like orange, apple, or berries to your water adds extra flavour without processed sugar! A great way to stay hydrated.',
@@ -288,11 +290,11 @@ const games = [
     instruction:
       'Tap on each figure to set how much of their body is water.',
     items: [
-      { name: 'Baby', image: '/hydration-quiz/images/baby.png', answer: 80 },
-      { name: 'Adult man', image: '/hydration-quiz/images/man.png', answer: 60 },
-      { name: 'Adult woman', image: '/hydration-quiz/images/woman.png', answer: 55 },
-      { name: 'Brain', image: '/hydration-quiz/images/brain.png', answer: 75 },
-      { name: 'Heart', image: '/hydration-quiz/images/heart.png', answer: 75 },
+      { name: 'Baby', image: `${BASE}images/baby.png`, answer: 80 },
+      { name: 'Adult man', image: `${BASE}images/man.png`, answer: 60 },
+      { name: 'Adult woman', image: `${BASE}images/woman.png`, answer: 55 },
+      { name: 'Brain', image: `${BASE}images/brain.png`, answer: 75 },
+      { name: 'Heart', image: `${BASE}images/heart.png`, answer: 75 },
     ],
     tolerance: 5,
     explanation:

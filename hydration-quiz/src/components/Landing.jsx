@@ -38,7 +38,7 @@ export default function Landing() {
 
       <div className="landing-logo-wrap">
         <div className="landing-logo-oval">
-          <img src="/hydration-quiz/images/health-embrace-logo.png" alt="Health Embrace" />
+          <img src={`${import.meta.env.BASE_URL}images/health-embrace-logo.png`} alt="Health Embrace" />
         </div>
       </div>
 
