@@ -1,0 +1,336 @@
+/* ── Hub landing page ── */
+
+.home {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+}
+
+/* ── Hero ── */
+
+.home-hero {
+  position: relative;
+  background: linear-gradient(135deg, #d4871c 0%, #e8a830 40%, #f0c050 100%);
+  padding: 0.75rem 1.5rem;
+  overflow: hidden;
+}
+
+.home-hero-row {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.home-hero-logo-area {
+  flex-shrink: 0;
+}
+
+.home-hero-title-area {
+  flex: 1;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-right: 4rem;
+}
+
+.home-logo-circle {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.home-logo-circle img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* floating emoji decorations */
+.home-hero-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-emoji {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.25;
+}
+
+.hero-emoji-1 { top: 12%; left: 8%; font-size: 2.2rem; }
+.hero-emoji-2 { top: 18%; right: 10%; font-size: 2rem; }
+.hero-emoji-3 { bottom: 18%; left: 14%; font-size: 1.6rem; }
+.hero-emoji-4 { bottom: 12%; right: 16%; font-size: 2rem; }
+.hero-emoji-5 { top: 45%; left: 4%; font-size: 1.4rem; }
+
+/* ── Intro ── */
+
+.home-intro {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1rem;
+  text-align: center;
+}
+
+.home-tagline {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  font-weight: 700;
+  color: #c08a1e;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.home-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── Quiz cards ── */
+
+.home-quizzes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 2rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .home-quizzes {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+}
+
+.home-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 5px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-card:active {
+  transform: scale(0.98);
+}
+
+.home-card--eating {
+  border-top-color: #F26522;
+}
+
+.home-card--hydration {
+  border-top-color: #00BCD4;
+}
+
+.home-card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.home-card-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.home-card-desc {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.home-card-topics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.home-card-topics li {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: #666;
+}
+
+.home-card--eating .home-card-topics li {
+  background: #fef3eb;
+  color: #c45a1a;
+}
+
+.home-card--hydration .home-card-topics li {
+  background: #e6f8fb;
+  color: #0097a7;
+}
+
+/* CTA buttons */
+
+.home-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 2.5rem;
+  border-radius: 14px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  margin-top: auto;
+}
+
+.home-card-btn:active {
+  transform: scale(0.96);
+}
+
+.home-card-btn--eating {
+  background: #F26522;
+}
+
+.home-card-btn--hydration {
+  background: #00BCD4;
+}
+
+/* ── Footer ── */
+
+.home-footer {
+  margin-top: auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.home-footer-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 0.75rem;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.home-footer-logo img {
+  width: 52px;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-footer-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+.home-footer-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* ── Entrance animation ── */
+
+.home-hero {
+  animation: homeHeroIn 0.5s ease-out;
+}
+
+.home-intro {
+  animation: homeFadeUp 0.5s ease-out 0.15s both;
+}
+
+.home-card {
+  animation: homeFadeUp 0.5s ease-out both;
+}
+
+.home-card:nth-child(1) { animation-delay: 0.25s; }
+.home-card:nth-child(2) { animation-delay: 0.35s; }
+
+@keyframes homeHeroIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes homeFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Desktop polish ── */
+
+@media (min-width: 640px) {
+  .home-hero {
+    padding: 0.85rem 2rem;
+  }
+
+  .home-logo-circle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .home-logo-circle img {
+    width: 56px;
+  }
+
+  .home-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .hero-emoji { font-size: 2.2rem; }
+  .hero-emoji-1 { font-size: 2.8rem; }
+}
