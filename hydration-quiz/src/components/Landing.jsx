@@ -1,8 +1,16 @@
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Landing.css'
 
 export default function Landing() {
   const navigate = useNavigate()
+  const [popped, setPopped] = useState(false)
+
+  const handlePop = useCallback(() => {
+    if (popped) return
+    setPopped(true)
+    setTimeout(() => setPopped(false), 2000)
+  }, [popped])
 
   return (
     <div className="landing animate-in">
@@ -33,7 +41,20 @@ export default function Landing() {
           Let&rsquo;s Go! 💧
         </button>
 
-        <div className="landing-emoji-mascot">💧</div>
+        <div className="landing-mascot-wrap" onClick={handlePop}>
+          {popped ? (
+            <div className="landing-splash">
+              <span className="splash-drop splash-1">💧</span>
+              <span className="splash-drop splash-2">💧</span>
+              <span className="splash-drop splash-3">💧</span>
+              <span className="splash-drop splash-4">💧</span>
+              <span className="splash-drop splash-5">💧</span>
+              <span className="splash-drop splash-6">💧</span>
+            </div>
+          ) : (
+            <div className="landing-emoji-mascot">💧</div>
+          )}
+        </div>
       </div>
 
       <div className="landing-logo-wrap">
