@@ -97,6 +97,7 @@ export default function Home() {
         <p className="home-footer-sub">
           Helping communities, schools, and sports clubs build healthier habits.
         </p>
+        <p className="home-footer-credit">© 2026 KekkleMePink</p>
       </footer>
     </div>
   )

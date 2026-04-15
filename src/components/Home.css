@@ -287,6 +287,13 @@
   color: #999;
 }
 
+.home-footer-credit {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  color: #bbb;
+  margin-top: 1rem;
+}
+
 /* ── Entrance animation ── */
 
 .home-hero {

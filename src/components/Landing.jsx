@@ -65,6 +65,7 @@ export default function Landing() {
           Based on the <strong>Eating for Energy &amp; Wellbeing</strong> webinar
           by Andrea Carroll Langan
         </p>
+        <p className="landing-footer-credit">© 2026 KekkleMePink</p>
       </div>
     </div>
   )

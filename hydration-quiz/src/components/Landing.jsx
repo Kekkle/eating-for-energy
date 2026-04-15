@@ -92,6 +92,7 @@ export default function Landing() {
           Based on the <strong>Hydration</strong> workshop
           by Health Embrace
         </p>
+        <p className="landing-footer-credit">© 2026 KekkleMePink</p>
       </div>
     </div>
   )

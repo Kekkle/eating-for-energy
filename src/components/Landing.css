@@ -141,3 +141,10 @@
   font-size: 0.8rem;
   color: var(--color-text-light);
 }
+
+.landing-footer-credit {
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
